@@ -1,0 +1,44 @@
+.courses-component {
+  background-color: #f1f5ff;
+  //   background-color: red;
+  height: 100vh;
+  width: 100%;
+}
+
+.courses-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+  padding-top: 10px;
+}
+
+.courses-section {
+  background-color: #fff;
+  margin: 0 20px;
+  padding: 20px;
+}
+
+.search-addCourse {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-field {
+  height: 25px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  padding: 5px 10px;
+  //   media query for min width 768px
+  @media (min-width: 768px) {
+    width: 250px;
+  }
+}
+
+.search-addCourse button {
+  color: grey;
+  padding: 0 30px;
+}
+
+.add-course-form {
+  margin-top: 40px;
+}

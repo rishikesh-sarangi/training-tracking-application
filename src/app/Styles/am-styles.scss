@@ -1,0 +1,37 @@
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
+  background-color: black !important;
+  border-radius: 5px;
+}
+
+.mdc-checkbox__background {
+  border: 2px white solid !important;
+}
+
+.mdc-checkbox__native-control:enabled:focus:indeterminate
+  ~ .mdc-checkbox__background {
+  background-color: #fff !important;
+}
+
+.input:-internal-autofill-selected {
+  background-color: black !important;
+}
+
+// sign out button
+.mat-mdc-menu-content,
+.mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+  padding: 0 !important;
+}
+
+$cozentus: #2c3b52;
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  background-color: $cozentus !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+.mat-mdc-table {
+  background-color: white !important;
+}
