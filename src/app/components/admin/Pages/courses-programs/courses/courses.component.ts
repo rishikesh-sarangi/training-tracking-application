@@ -16,13 +16,6 @@ import {
   NgForm,
 } from '@angular/forms';
 
-interface CourseForm {
-  code: string;
-  course: string;
-  theory: number | null;
-  practice: number | null;
-}
-
 @Component({
   selector: 'app-courses',
   standalone: true,
@@ -53,10 +46,11 @@ export class CoursesComponent {
   protected isAddCourseClicked: boolean = false;
   protected isDescOpen = false;
   protected isTopicsOpen = false;
-  // REACTIVE FORM
-  isFormValid = false;
+  // logic for letters/40 in desc and add topics
+  protected addTopicsLength: number = 0;
 
-  addCourseReactiveForm!: FormGroup;
+  // REACTIVE FORM
+  protected addCourseReactiveForm!: FormGroup;
 
   ngOnInit(): void {
     this.addCourseReactiveForm = new FormGroup({
@@ -64,21 +58,44 @@ export class CoursesComponent {
       course: new FormControl(null, Validators.required),
       theoryTime: new FormControl(null, Validators.required),
       practiceTime: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      addTopics: new FormControl(null, Validators.required),
+      description: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(40),
+      ]),
+      addTopics: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(40),
+      ]),
     });
   }
 
-  onSubmit() {
+  protected onSubmit() {
     console.log(this.addCourseReactiveForm);
   }
 
   closeForm() {
     this.addCourseReactiveForm.reset();
-    // this.isAddCourseBtnClicked = !this.isAddCourseBtnClicked;
+    this.isAddCourseClicked = !this.isAddCourseClicked;
+    console.log('close form', this.isAddCourseClicked);
   }
 
   protected addCourse() {
     this.isAddCourseClicked = !this.isAddCourseClicked;
+    console.log('add course', this.isAddCourseClicked);
+  }
+
+  protected isTopicsOpenFn() {
+    this.isTopicsOpen = !this.isTopicsOpen;
+  }
+
+  // logic for letters / 40 in desc
+  protected lettersTypedDesc: number = 0;
+  protected lettersTypedTopics: number = 0;
+  protected onInputChange(event: any, type: string) {
+    if (type == 'description') {
+      this.lettersTypedDesc = event.target.value.length;
+      return;
+    }
+    this.lettersTypedTopics = event.target.value.length;
   }
 }

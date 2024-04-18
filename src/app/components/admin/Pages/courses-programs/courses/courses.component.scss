@@ -35,7 +35,6 @@
 }
 
 .search-addCourse button {
-  color: grey;
   padding: 0 30px;
 }
 
@@ -124,9 +123,12 @@ table {
   .save-close {
     display: flex;
     gap: 5px;
+    :first-child {
+      background-color: #2c75ff;
+    }
 
     button {
-      padding: 5px 10px;
+      padding: 3px 35px;
     }
   }
   display: flex;
@@ -146,5 +148,6 @@ table {
 
 .input-text {
   text-decoration: underline;
-  color: blue;
+  color: #6a91c7;
+  cursor: pointer;
 }

@@ -13,7 +13,13 @@
   <div class="courses-section">
     <div class="search-addCourse">
       <input type="text" placeholder="Search" class="search-field" />
-      <button mat-stroked-button (click)="addCourse()">Add Course</button>
+      <button
+        mat-stroked-button
+        [disabled]="isAddCourseClicked"
+        (click)="addCourse()"
+      >
+        Add Course
+      </button>
     </div>
 
     <ng-container *ngIf="isAddCourseClicked">
@@ -30,9 +36,9 @@
                 </th>
                 <td mat-cell *matCellDef="let element">
                   <button
+                    type="submit"
                     mat-icon-button
                     [disabled]="!addCourseReactiveForm.valid"
-                    (click)="onSubmit()"
                   >
                     <mat-icon
                       ><span class="material-symbols-outlined">
@@ -169,15 +175,30 @@
                         >
                       </div>
                       <div class="overlay-second-row">
-                        <textarea formControlName="description"></textarea>
+                        <mat-form-field style="width: 100%">
+                          <textarea
+                            matInput
+                            formControlName="description"
+                            (input)="onInputChange($event, 'description')"
+                          ></textarea>
+                          <mat-error
+                            >Field can't be empty or have more than 40
+                            characters</mat-error
+                          >
+                        </mat-form-field>
                       </div>
                       <div class="overlay-third-row">
-                        <p>20/40</p>
+                        <p>{{ lettersTypedDesc }}/40</p>
                         <div class="save-close">
-                          <button class="btn btn-primary">Save</button
-                          ><button
-                            class="btn btn-light"
+                          <button
+                            mat-raised-button
+                            color="primary"
                             (click)="isDescOpen = !isDescOpen"
+                          >
+                            Save</button
+                          ><button
+                            (click)="isDescOpen = !isDescOpen"
+                            mat-stroked-button
                           >
                             Close
                           </button>
@@ -232,15 +253,27 @@
                         >
                       </div>
                       <div class="overlay-second-row">
-                        <textarea formControlName="addTopics"></textarea>
+                        <mat-form-field style="width: 100%">
+                          <textarea
+                            matInput
+                            formControlName="addTopics"
+                            (input)="onInputChange($event, 'topics')"
+                          ></textarea>
+                          <mat-error>Field can't be empty !</mat-error>
+                        </mat-form-field>
                       </div>
                       <div class="overlay-third-row">
-                        <p>20/40</p>
+                        <p>{{ lettersTypedTopics }}/40</p>
                         <div class="save-close">
-                          <button class="btn btn-primary">Save</button
-                          ><button
-                            class="btn btn-light"
+                          <button
+                            mat-raised-button
+                            color="primary"
                             (click)="isTopicsOpen = !isTopicsOpen"
+                          >
+                            Save</button
+                          ><button
+                            (click)="isTopicsOpen = !isTopicsOpen"
+                            mat-stroked-button
                           >
                             Close
                           </button>
