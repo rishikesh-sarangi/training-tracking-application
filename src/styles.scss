@@ -6,10 +6,11 @@
 html,
 body {
   height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
-
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -23,4 +24,9 @@ body {
 
 .dense-3 {
   @include mat.all-component-densities(-3);
+}
+
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }

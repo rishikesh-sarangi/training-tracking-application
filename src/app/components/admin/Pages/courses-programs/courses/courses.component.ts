@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { OverlayModule } from '@angular/cdk/overlay';
 import {
   FormBuilder,
   FormGroup,
@@ -34,22 +35,26 @@ interface CourseForm {
     MatTableModule,
     ReactiveFormsModule,
     MatMenuModule,
+    OverlayModule,
   ],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
+  displayedColumns: string[] = [
+    'actions',
+    'code',
+    'course',
+    'theoryTime',
+    'practiceTime',
+    'description',
+    'topics',
+  ];
   protected isAddCourseClicked: boolean = false;
-  expression: boolean = true;
+  protected isDescOpen = false;
+  protected isTopicsOpen = false;
   // REACTIVE FORM
   isFormValid = false;
-
-  formData: CourseForm = {
-    code: '',
-    course: '',
-    theory: null,
-    practice: null,
-  };
 
   addCourseReactiveForm!: FormGroup;
 
@@ -59,6 +64,8 @@ export class CoursesComponent {
       course: new FormControl(null, Validators.required),
       theoryTime: new FormControl(null, Validators.required),
       practiceTime: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      addTopics: new FormControl(null, Validators.required),
     });
   }
 
