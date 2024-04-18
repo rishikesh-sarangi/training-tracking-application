@@ -35,3 +35,7 @@ input:-webkit-autofill:focus {
 .mat-mdc-table {
   background-color: white !important;
 }
+
+.table > :not(caption) > * > * {
+  padding: 0px !important;
+}

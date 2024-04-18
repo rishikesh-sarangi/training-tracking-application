@@ -5,14 +5,21 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { FormsModule } from '@angular/forms';
 import {
   FormBuilder,
   FormGroup,
   FormControl,
   ReactiveFormsModule,
   Validators,
+  NgForm,
 } from '@angular/forms';
+
+interface CourseForm {
+  code: string;
+  course: string;
+  theory: number | null;
+  practice: number | null;
+}
 
 @Component({
   selector: 'app-courses',
@@ -24,7 +31,6 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    FormsModule,
     ReactiveFormsModule,
   ],
   templateUrl: './courses.component.html',
@@ -32,26 +38,36 @@ import {
 })
 export class CoursesComponent {
   protected isAddCourseClicked: boolean = false;
-  displayedColumns: string[] = [
-    'column1',
-    'column2',
-    'column3',
-    'column4',
-    'column5',
-    'column6',
-    'column7',
-  ];
-  dataSource = [
-    {
-      column1: '',
-      column2: '',
-      column3: '',
-      column4: '',
-      column5: '',
-      column6: '',
-      column7: '',
-    },
-  ];
+  // REACTIVE FORM
+  isFormValid = false;
+
+  formData: CourseForm = {
+    code: '',
+    course: '',
+    theory: null,
+    practice: null,
+  };
+
+  addCourseReactiveForm!: FormGroup;
+
+  ngOnInit(): void {
+    this.addCourseReactiveForm = new FormGroup({
+      code: new FormControl(null, Validators.required),
+      course: new FormControl(null, Validators.required),
+      theoryTime: new FormControl(null, Validators.required),
+      practiceTime: new FormControl(null, Validators.required),
+    });
+  }
+
+  onSubmit() {
+    console.log(this.addCourseReactiveForm);
+  }
+
+  closeForm() {
+    this.addCourseReactiveForm.reset();
+    // this.isAddCourseBtnClicked = !this.isAddCourseBtnClicked;
+  }
+
   protected addCourse() {
     this.isAddCourseClicked = !this.isAddCourseClicked;
   }

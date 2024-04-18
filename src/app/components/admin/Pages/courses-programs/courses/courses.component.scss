@@ -25,13 +25,14 @@
 
 .search-field {
   height: 25px;
-  border: 1px solid grey;
+  border: 1px solid rgba(128, 128, 128, 0.4);
   border-radius: 3px;
   padding: 5px 10px;
   //   media query for min width 768px
   @media (min-width: 768px) {
     width: 250px;
   }
+  box-sizing: content-box !important;
 }
 
 .search-addCourse button {
@@ -41,4 +42,25 @@
 
 .add-course-form {
   margin-top: 40px;
+}
+
+.material-icons-outlined-customzied {
+  font-size: 18px;
+}
+
+.input-fields {
+  border: none;
+  outline: none;
+  padding: 5px !important;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+}
+
+.custom-spacing {
+  padding-right: 54px;
+}
+
+.cols > td {
+  padding-bottom: 20px;
+  font-weight: 500;
 }

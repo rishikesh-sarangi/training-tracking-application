@@ -17,79 +17,87 @@
     </div>
     <ng-container *ngIf="isAddCourseClicked">
       <div class="add-course-form">
-        <!-- app.component.html -->
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-          <ng-container matColumnDef="column1">
-            <th mat-header-cell *matHeaderCellDef>Actions</th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <mat-icon>
-                  <span class="material-symbols-outlined">
-                    done
-                  </span></mat-icon
-                >
-                <mat-icon
-                  ><span class="material-symbols-outlined">
-                    close
-                  </span></mat-icon
-                >
-              </mat-form-field>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="column2">
-            <th mat-header-cell *matHeaderCellDef>Code</th>
-            <td mat-cell *matCellDef="let element">
-              <input matInput [(ngModel)]="element.column2" />
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="column3">
-            <th mat-header-cell *matHeaderCellDef>Course Name</th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.column3" />
-              </mat-form-field>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="column4">
-            <th mat-header-cell *matHeaderCellDef>Theory Time</th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.column4" />
-              </mat-form-field>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="column5">
-            <th mat-header-cell *matHeaderCellDef>Practice Time</th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.column5" />
-              </mat-form-field>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="column6">
-            <th mat-header-cell *matHeaderCellDef>Description</th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.column6" />
-              </mat-form-field>
-            </td>
-          </ng-container>
-          <ng-container matColumnDef="column7">
-            <th mat-header-cell *matHeaderCellDef>Topics</th>
-            <td mat-cell *matCellDef="let element">
-              <mat-form-field>
-                <input matInput [(ngModel)]="element.column7" />
-              </mat-form-field>
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
+        <form (ngSubmit)="onSubmit()" [formGroup]="addCourseReactiveForm">
+          <div class="table-responsive">
+            <table class="table table-borderless">
+              <tr class="cols">
+                <td class="custom-spacing mat-h3">Actions</td>
+                <td class="mat-h3">Code</td>
+                <td class="mat-h3">Course Name</td>
+                <td class="mat-h3">Theory Time</td>
+                <td class="mat-h3">Practice Time</td>
+                <td class="mat-h3" style="padding-right: 65px">Description</td>
+                <td class="mat-h3">Topics</td>
+              </tr>
+              <tr>
+                <td>
+                  <!--       [disabled]="!addCourseReactiveForm.valid" -->
+                  <mat-icon
+                    type="submit"
+                    name="tick"
+                    [ngClass]="{ 'btn-disabled': !addCourseReactiveForm.valid }"
+                    (click)="onSubmit()"
+                  >
+                    <span
+                      class="material-symbols-outlined material-icons-outlined-customzied"
+                    >
+                      done
+                    </span>
+                  </mat-icon>
+                  <mat-icon (click)="closeForm()" name="cross">
+                    <span
+                      class="material-symbols-outlined material-icons-outlined-customzied"
+                    >
+                      close
+                    </span>
+                  </mat-icon>
+                </td>
+                <td>
+                  <!--  -->
+                  <input
+                    type="text"
+                    name="code"
+                    formControlName="code"
+                    placeholder="Enter Code"
+                    class="input-fields"
+                  />
+                </td>
+                <td>
+                  <!--   ngModel -->
+                  <input
+                    type="text"
+                    name="course"
+                    formControlName="course"
+                    placeholder="Enter Course Name"
+                    class="input-fields"
+                  />
+                </td>
+                <td>
+                  <!--   ngModel -->
+                  <input
+                    type="text"
+                    name="theoryTime"
+                    formControlName="theoryTime"
+                    placeholder="0 hr"
+                    class="input-fields"
+                  />
+                </td>
+                <td>
+                  <!--  ngModel -->
+                  <input
+                    type="text"
+                    name="practiceTime"
+                    formControlName="practiceTime"
+                    placeholder="0 hr"
+                    class="input-fields"
+                  />
+                </td>
+                <td><a class="text-primary">Add Description</a></td>
+                <td><a class="text-primary">Add Topics</a></td>
+              </tr>
+            </table>
+          </div>
+        </form>
       </div>
     </ng-container>
   </div>
