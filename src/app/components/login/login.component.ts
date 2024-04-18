@@ -5,6 +5,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarModule,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 import {
   FormGroup,
   ReactiveFormsModule,
@@ -24,12 +31,15 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    MatIconModule,
+    MatSelectModule,
+    MatSnackBarModule,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private snackBar: MatSnackBar) {}
   hide = true;
 
   // reactive forms
@@ -43,6 +53,14 @@ export class LoginComponent implements OnInit {
         Validators.minLength(3),
       ]),
       rememberMe: new FormControl(null, Validators.required),
+    });
+  }
+
+  protected openSnackBar() {
+    this.snackBar.open('Login Invalid', 'Close', {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      // duration: 2000,
     });
   }
 
@@ -60,6 +78,8 @@ export class LoginComponent implements OnInit {
     ) {
       localStorage.setItem('loggedInTemp', 'true');
       this.router.navigate(['home', 'courses']);
+    } else {
+      this.openSnackBar();
     }
     console.log(this.loginForm);
   }
