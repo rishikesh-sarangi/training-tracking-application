@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import {
@@ -32,12 +33,14 @@ interface CourseForm {
     MatInputModule,
     MatTableModule,
     ReactiveFormsModule,
+    MatMenuModule,
   ],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
   protected isAddCourseClicked: boolean = false;
+  expression: boolean = true;
   // REACTIVE FORM
   isFormValid = false;
 
