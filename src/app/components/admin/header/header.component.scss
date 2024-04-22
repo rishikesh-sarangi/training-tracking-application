@@ -59,7 +59,6 @@ mat-toolbar-row .navbar-buttons {
 
 .navbar-buttons:hover {
   background-color: #3e5172;
-  height: 30px;
 }
 
 .active {
@@ -82,6 +81,13 @@ mat-toolbar-row .navbar-buttons {
   font-size: inherit;
 }
 
+.navbar-buttons mat-icon {
+  // media query for max-width of 375px
+  @media (max-width: 570px) {
+    display: none;
+  }
+}
+
 .course-menu-btn {
   @media (min-width: 768px) {
     margin-right: 100px;
@@ -89,4 +95,8 @@ mat-toolbar-row .navbar-buttons {
   &:hover {
     background-color: #3e5172 !important;
   }
+}
+
+.activeColor {
+  background-color: #3e5172 !important;
 }

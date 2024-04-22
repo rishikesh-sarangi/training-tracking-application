@@ -1,0 +1,12 @@
+{
+  "courses": [
+    {
+      "code": "CSC 101",
+      "course": "Introduction to Computer Science",
+      "theoryTime": "0 hr",
+      "practiceTime": "0 hr",
+      "description": "Introduction to Computer Science",
+      "topics": "Introduction to Computer Science"
+    }
+  ]
+}

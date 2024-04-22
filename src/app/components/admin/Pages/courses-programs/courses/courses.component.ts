@@ -3,16 +3,19 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { FormsModule } from '@angular/forms';
+import { OverlayModule } from '@angular/cdk/overlay';
 import {
   FormBuilder,
   FormGroup,
   FormControl,
   ReactiveFormsModule,
   Validators,
+  NgForm,
 } from '@angular/forms';
+import { CoursesTableComponent } from './courses-table/courses-table.component';
 
 @Component({
   selector: 'app-courses',
@@ -24,35 +27,77 @@ import {
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    FormsModule,
     ReactiveFormsModule,
+    MatMenuModule,
+    OverlayModule,
+    CoursesTableComponent,
   ],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
-  protected isAddCourseClicked: boolean = false;
   displayedColumns: string[] = [
-    'column1',
-    'column2',
-    'column3',
-    'column4',
-    'column5',
-    'column6',
-    'column7',
+    'actions',
+    'code',
+    'course',
+    'theoryTime',
+    'practiceTime',
+    'description',
+    'topics',
   ];
-  dataSource = [
-    {
-      column1: '',
-      column2: '',
-      column3: '',
-      column4: '',
-      column5: '',
-      column6: '',
-      column7: '',
-    },
-  ];
+  protected isAddCourseClicked: boolean = false;
+  protected isDescOpen = false;
+  protected isTopicsOpen = false;
+  // logic for letters/40 in desc and add topics
+  protected addTopicsLength: number = 0;
+
+  // REACTIVE FORM
+  protected addCourseReactiveForm!: FormGroup;
+
+  ngOnInit(): void {
+    this.addCourseReactiveForm = new FormGroup({
+      code: new FormControl(null, Validators.required),
+      course: new FormControl(null, Validators.required),
+      theoryTime: new FormControl(null, Validators.required),
+      practiceTime: new FormControl(null, Validators.required),
+      description: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(40),
+      ]),
+      addTopics: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(40),
+      ]),
+    });
+  }
+
+  protected onSubmit() {
+    console.log(this.addCourseReactiveForm);
+  }
+
+  closeForm() {
+    this.addCourseReactiveForm.reset();
+    this.isAddCourseClicked = !this.isAddCourseClicked;
+    console.log('close form', this.isAddCourseClicked);
+  }
+
   protected addCourse() {
     this.isAddCourseClicked = !this.isAddCourseClicked;
+    console.log('add course', this.isAddCourseClicked);
+  }
+
+  protected isTopicsOpenFn() {
+    this.isTopicsOpen = !this.isTopicsOpen;
+  }
+
+  // logic for letters / 40 in desc
+  protected lettersTypedDesc: number = 0;
+  protected lettersTypedTopics: number = 0;
+  protected onInputChange(event: any, type: string) {
+    if (type == 'description') {
+      this.lettersTypedDesc = event.target.value.length;
+      return;
+    }
+    this.lettersTypedTopics = event.target.value.length;
   }
 }
