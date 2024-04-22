@@ -15,6 +15,7 @@ import {
   Validators,
   NgForm,
 } from '@angular/forms';
+import { CoursesTableComponent } from './courses-table/courses-table.component';
 
 @Component({
   selector: 'app-courses',
@@ -29,6 +30,7 @@ import {
     ReactiveFormsModule,
     MatMenuModule,
     OverlayModule,
+    CoursesTableComponent,
   ],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
