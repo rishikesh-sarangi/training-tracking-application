@@ -33,5 +33,23 @@ input:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 .mat-mdc-table {
-  background-color: white !important;
+  background-color: #f1f5ff !important;
+  padding: 0 !important;
+  margin-top: 20px;
+}
+
+.mat-mdc-table tbody,
+.mat-mdc-table tfoot,
+.mat-mdc-table thead,
+.mat-mdc-cell,
+.mat-mdc-footer-cell,
+.mat-mdc-header-row,
+.mat-mdc-row,
+.mat-mdc-footer-row,
+.mat-mdc-table .mat-mdc-header-cell {
+  border: none;
+}
+
+.mdc-data-table__row:last-child .mat-mdc-cell {
+  // padding: 0px !important;
 }
