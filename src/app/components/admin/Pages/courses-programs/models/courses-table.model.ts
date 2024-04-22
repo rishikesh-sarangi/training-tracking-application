@@ -4,5 +4,5 @@ export interface TableData {
   theoryTime: string;
   practiceTime: string;
   description: string;
-  topics: string;
+  addTopics: string;
 }

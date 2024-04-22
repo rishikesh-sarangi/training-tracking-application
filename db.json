@@ -1,12 +1,94 @@
 {
   "courses": [
     {
-      "code": "CSC 101",
-      "course": "Introduction to Computer Science",
-      "theoryTime": "0 hr",
-      "practiceTime": "0 hr",
-      "description": "Introduction to Computer Science",
-      "topics": "Introduction to Computer Science"
+      "code": "24CGF1",
+      "course": "Java Programming",
+      "theoryTime": "6",
+      "practiceTime": "5",
+      "description": "Java BOILERPLATE BASED CODING LANGUAGE",
+      "addTopics": "OOPs, Interface, Variables, Loops",
+      "id": "b3a3"
+    },
+    {
+      "code": "24CGF3",
+      "course": "C++ Programming",
+      "theoryTime": "3",
+      "practiceTime": "6",
+      "description": "C++ is a powerful object-oriented lang.",
+      "addTopics": "OOP, Templates, STL, Memory Management",
+      "id": "c5d6"
+    },
+    {
+      "code": "24CGF4",
+      "course": "Web Development",
+      "theoryTime": "5",
+      "practiceTime": "8",
+      "description": "Learn HTML, CSS, JS for web development",
+      "addTopics": "HTML, CSS, JavaScript, React/Angular/Vue",
+      "id": "e2f8"
+    },
+    {
+      "code": "24CGF5",
+      "course": "Data Structures and Algorithms",
+      "theoryTime": "6",
+      "practiceTime": "7",
+      "description": "Mastering DS & Algo for coding interview",
+      "addTopics": "Arrays, Linked Lists, Trees, Sorting",
+      "id": "g3h9"
+    },
+    {
+      "code": "24CGF6",
+      "course": "Database Management",
+      "theoryTime": "4",
+      "practiceTime": "6",
+      "description": "Learn SQL and database management systems",
+      "addTopics": "SQL, RDBMS, NoSQL, Database Design",
+      "id": "i4j0"
+    },
+    {
+      "code": "24CGF7",
+      "course": "Machine Learning",
+      "theoryTime": "8",
+      "practiceTime": "5",
+      "description": "Explore ML algorithms and their applications",
+      "addTopics": "Regression, Classification, Clustering, NLP",
+      "id": "k6l2"
+    },
+    {
+      "code": "24CGF8",
+      "course": "Computer Networks",
+      "theoryTime": "6",
+      "practiceTime": "4",
+      "description": "Understanding computer network principles",
+      "addTopics": "OSI Model, TCP/IP, Routing, Network Security",
+      "id": "m8n4"
+    },
+    {
+      "code": "24CGF9",
+      "course": "Operating Systems",
+      "theoryTime": "7",
+      "practiceTime": "5",
+      "description": "Learn internals of operating systems",
+      "addTopics": "Process Management, Memory Management, I/O",
+      "id": "o0p6"
+    },
+    {
+      "code": "24CGA0",
+      "course": "Mobile App Development",
+      "theoryTime": "5",
+      "practiceTime": "8",
+      "description": "Build mobile apps for iOS and Android",
+      "addTopics": "Swift, Kotlin, React Native, Flutter",
+      "id": "q2r8"
+    },
+    {
+      "code": "24CGA1",
+      "course": "Cyber Security",
+      "theoryTime": "6",
+      "practiceTime": "6",
+      "description": "Understand security principles and practices",
+      "addTopics": "Cryptography, Network Security, Web Security",
+      "id": "s4t0"
     }
   ]
 }

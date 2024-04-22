@@ -23,17 +23,19 @@
 }
 
 $cozentus: #2c3b52;
-.mat-elevation-z8,
-.mat-mdc-elevation-specific.mat-elevation-z8 {
-  background-color: $cozentus !important;
+.mat-mdc-menu-content {
+  background-color: $cozentus;
+}
+.mat-mdc-menu-panel {
+  background-color: inherit !important;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s !important;
 }
+
 .mat-mdc-table {
-  background-color: #f1f5ff !important;
   padding: 0 !important;
   margin-top: 20px;
 }
@@ -47,9 +49,5 @@ input:-webkit-autofill:focus {
 .mat-mdc-row,
 .mat-mdc-footer-row,
 .mat-mdc-table .mat-mdc-header-cell {
-  border: none;
-}
-
-.mdc-data-table__row:last-child .mat-mdc-cell {
-  // padding: 0px !important;
+  border: none !important;
 }
