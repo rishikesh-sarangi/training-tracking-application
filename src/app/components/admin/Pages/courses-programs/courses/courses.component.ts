@@ -16,6 +16,7 @@ import {
   NgForm,
 } from '@angular/forms';
 import { CoursesTableComponent } from './courses-table/courses-table.component';
+import { CourseTableDataService } from '../../../Services/course-table-data.service';
 
 @Component({
   selector: 'app-courses',
@@ -36,6 +37,8 @@ import { CoursesTableComponent } from './courses-table/courses-table.component';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
+  constructor(private courseTableData: CourseTableDataService) {}
+
   displayedColumns: string[] = [
     'actions',
     'code',
@@ -48,6 +51,7 @@ export class CoursesComponent {
   protected isAddCourseClicked: boolean = false;
   protected isDescOpen = false;
   protected isTopicsOpen = false;
+
   // logic for letters/40 in desc and add topics
   protected addTopicsLength: number = 0;
 
@@ -72,7 +76,23 @@ export class CoursesComponent {
   }
 
   protected onSubmit() {
-    console.log(this.addCourseReactiveForm);
+    // console.log(this.addCourseReactiveForm.value);
+    if (this.addCourseReactiveForm.valid) {
+      this.courseTableData
+        .addCourse(this.addCourseReactiveForm.value)
+        .subscribe({
+          next: (data: any) => {
+            // console.log(data);
+            // add snackbar
+          },
+          error: (err: any) => {
+            console.log(err);
+          },
+          complete: () => {
+            this.closeForm();
+          },
+        });
+    }
   }
 
   closeForm() {

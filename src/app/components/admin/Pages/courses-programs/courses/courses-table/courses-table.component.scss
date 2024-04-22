@@ -1,0 +1,17 @@
+@import "../../courses/courses.component.scss";
+
+.action-buttons {
+  display: flex;
+  gap: 5px;
+
+  mat-icon {
+    cursor: pointer;
+  }
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
