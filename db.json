@@ -1,21 +1,11 @@
 {
   "courses": [
     {
-      "code": "24CGF1",
-      "course": "Java Programming",
-      "theoryTime": "6",
-      "practiceTime": "5",
-      "description": "Java BOILERPLATE BASED CODING LANGUAGE",
-      "addTopics": "OOPs, Interface, Variables, Loops",
-      "id": "b3a3"
-    },
-    {
       "code": "24CGF3",
       "course": "C++ Programming",
-      "theoryTime": "3",
+      "theoryTime": "7",
       "practiceTime": "6",
       "description": "C++ is a powerful object-oriented lang.",
-      "addTopics": "OOP, Templates, STL, Memory Management",
       "id": "c5d6"
     },
     {
@@ -24,7 +14,6 @@
       "theoryTime": "5",
       "practiceTime": "8",
       "description": "Learn HTML, CSS, JS for web development",
-      "addTopics": "HTML, CSS, JavaScript, React/Angular/Vue",
       "id": "e2f8"
     },
     {
@@ -33,7 +22,6 @@
       "theoryTime": "6",
       "practiceTime": "7",
       "description": "Mastering DS & Algo for coding interview",
-      "addTopics": "Arrays, Linked Lists, Trees, Sorting",
       "id": "g3h9"
     },
     {
@@ -41,8 +29,7 @@
       "course": "Database Management",
       "theoryTime": "4",
       "practiceTime": "6",
-      "description": "Learn SQL and database management systems",
-      "addTopics": "SQL, RDBMS, NoSQL, Database Design",
+      "description": "Learn SQL and database management system",
       "id": "i4j0"
     },
     {
@@ -50,8 +37,8 @@
       "course": "Machine Learning",
       "theoryTime": "8",
       "practiceTime": "5",
-      "description": "Explore ML algorithms and their applications",
-      "addTopics": "Regression, Classification, Clustering, NLP",
+      "description": "Explore ML algorithms and their apps.",
+      "addTopics": "Regression, Classification, Clustering.",
       "id": "k6l2"
     },
     {
@@ -89,6 +76,32 @@
       "description": "Understand security principles and practices",
       "addTopics": "Cryptography, Network Security, Web Security",
       "id": "s4t0"
+    },
+    {
+      "code": "AGC45",
+      "course": "dasd",
+      "theoryTime": "dasd",
+      "practiceTime": "sadsadas",
+      "description": "dasdas",
+      "id": "d372"
+    }
+  ],
+  "topics": [
+    {
+      "id": "89eb",
+      "code": "24CGF3",
+      "course": "C++ Programming",
+      "topic": [
+        {
+          "id": "5f34",
+          "order": "1",
+          "topicName": "Variablesdsadasdsadsa & Operators",
+          "theoryTime": "2",
+          "practiceTime": "2",
+          "summary": "lorem ipsum todor it work will work bye bye hello katz",
+          "content": "lorem ipsum todor it work will work bye bye hello katz"
+        }
+      ]
     }
   ]
 }

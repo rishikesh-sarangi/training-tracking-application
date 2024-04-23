@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatMenuModule } from '@angular/material/menu';
+import { Router, NavigationExtras, RouterModule } from '@angular/router';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   MatDialog,
   MatDialogRef,
@@ -44,6 +46,8 @@ import { DeleteDialogueComponent } from './delete-dialogue/delete-dialogue.compo
     MatMenuModule,
     ReactiveFormsModule,
     MatDialogModule,
+    RouterModule,
+    MatTooltipModule,
   ],
   templateUrl: './courses-table.component.html',
   styleUrls: ['./courses-table.component.scss'],
@@ -51,7 +55,8 @@ import { DeleteDialogueComponent } from './delete-dialogue/delete-dialogue.compo
 export class CoursesTableComponent implements OnInit {
   constructor(
     private courseTableData: CourseTableDataService,
-    public _deleteDialog: MatDialog
+    public _deleteDialog: MatDialog,
+    private router: Router
   ) {}
 
   // reactive form
@@ -86,15 +91,14 @@ export class CoursesTableComponent implements OnInit {
         Validators.required,
         Validators.maxLength(40),
       ]),
-      addTopics: new FormControl(null, [
-        Validators.required,
-        Validators.maxLength(40),
-      ]),
     });
   }
-  getCoursesList() {
+
+  // READ DATA
+  protected getCoursesList() {
     this.courseTableData.getCourses().subscribe({
       next: (data) => {
+        // console.log(data);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -109,7 +113,7 @@ export class CoursesTableComponent implements OnInit {
   }
 
   // DELETE DATA
-  deleteCourse(id: string, code: string, course: string) {
+  protected deleteCourse(id: string, code: string, course: string) {
     const dialogRef = this._deleteDialog.open(DeleteDialogueComponent, {
       data: { targetCode: code, targetCourse: course },
     });
@@ -134,13 +138,13 @@ export class CoursesTableComponent implements OnInit {
 
   // EDIT DATA
   editingRowID: number | null = null;
-  editCourse(i: number, row: TableData) {
+  protected editCourse(i: number, row: TableData) {
     // console.log(row);
     this.editingRowID = i;
     this.populateEditFields(row);
   }
 
-  populateEditFields(row: TableData) {
+  protected populateEditFields(row: TableData) {
     this.editCourseReactiveForm.patchValue({
       code: row.code,
       course: row.course,
@@ -151,11 +155,11 @@ export class CoursesTableComponent implements OnInit {
     });
   }
 
-  cancelEditing() {
+  protected cancelEditing() {
     this.editingRowID = null;
   }
 
-  saveCourse(row: any) {
+  protected saveCourse(row: any) {
     // console.log(row.id);
     if (this.editCourseReactiveForm.valid) {
       this.courseTableData
