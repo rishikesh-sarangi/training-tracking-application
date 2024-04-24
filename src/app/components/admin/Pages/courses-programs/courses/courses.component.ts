@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   FormBuilder,
   FormGroup,
@@ -32,6 +33,7 @@ import { CourseTableDataService } from '../../../Services/course-table-data.serv
     MatMenuModule,
     OverlayModule,
     CoursesTableComponent,
+    MatTooltipModule,
   ],
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
@@ -49,11 +51,6 @@ export class CoursesComponent {
     'topics',
   ];
   protected isAddCourseClicked: boolean = false;
-  protected isDescOpen = false;
-  protected isTopicsOpen = false;
-
-  // logic for letters/40 in desc and add topics
-  protected addTopicsLength: number = 0;
 
   // REACTIVE FORM
   protected addCourseReactiveForm!: FormGroup;
@@ -65,10 +62,6 @@ export class CoursesComponent {
       theoryTime: new FormControl(null, Validators.required),
       practiceTime: new FormControl(null, Validators.required),
       description: new FormControl(null, [
-        Validators.required,
-        Validators.maxLength(40),
-      ]),
-      addTopics: new FormControl(null, [
         Validators.required,
         Validators.maxLength(40),
       ]),
@@ -98,26 +91,19 @@ export class CoursesComponent {
   closeForm() {
     this.addCourseReactiveForm.reset();
     this.isAddCourseClicked = !this.isAddCourseClicked;
-    console.log('close form', this.isAddCourseClicked);
+    // console.log('close form', this.isAddCourseClicked);
   }
 
   protected addCourse() {
     this.isAddCourseClicked = !this.isAddCourseClicked;
-    console.log('add course', this.isAddCourseClicked);
-  }
-
-  protected isTopicsOpenFn() {
-    this.isTopicsOpen = !this.isTopicsOpen;
+    // console.log('add course', this.isAddCourseClicked);
   }
 
   // logic for letters / 40 in desc
+  protected isDescOpen = false;
   protected lettersTypedDesc: number = 0;
-  protected lettersTypedTopics: number = 0;
-  protected onInputChange(event: any, type: string) {
-    if (type == 'description') {
-      this.lettersTypedDesc = event.target.value.length;
-      return;
-    }
-    this.lettersTypedTopics = event.target.value.length;
+  protected onInputChange(event: any) {
+    this.lettersTypedDesc = event.target.value.length;
+    return;
   }
 }

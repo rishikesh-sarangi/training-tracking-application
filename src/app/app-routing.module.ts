@@ -8,6 +8,7 @@ import { ProgramsComponent } from './components/admin/Pages/courses-programs/pro
 import { BatchComponent } from './components/admin/Pages/batch/batch.component';
 import { TeachersComponent } from './components/admin/Pages/teachers/teachers.component';
 import { StudentsComponent } from './components/admin/Pages/students/students.component';
+import { TopicsComponent } from './components/admin/Pages/courses-programs/courses/topics/topics.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'batch', component: BatchComponent },
       { path: 'teachers', component: TeachersComponent },
       { path: 'students', component: StudentsComponent },
+      { path: 'topics/:topicCode', component: TopicsComponent },
     ],
   },
 ];
