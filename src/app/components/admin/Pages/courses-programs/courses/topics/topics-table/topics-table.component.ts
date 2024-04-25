@@ -95,6 +95,7 @@ export class TopicsTableComponent implements OnInit {
             topicArrays.push(...obj.topic);
           }
         }
+        // put the topic array in the data source
         this.dataSource = new MatTableDataSource(topicArrays);
         // console.log(this.dataSource);
         this.dataSource.sort = this.sort;
@@ -115,9 +116,10 @@ export class TopicsTableComponent implements OnInit {
       data: { targetTopicName: topicName },
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
+    dialogRef.afterClosed().subscribe((result: boolean) => {
       if (result) {
-        this.addTopicsData.deleteTopics(topicName).subscribe({
+        // console.log(topicName + 'topicName coming from topic-table-component');
+        this.addTopicsData.deleteTopics(this.routedTopic, topicName).subscribe({
           next: (data: any) => {
             console.log('emp deleted');
             this.getTopicsList();
@@ -142,14 +144,14 @@ export class TopicsTableComponent implements OnInit {
   }
 
   protected populateEditFields(row: any) {
-    console.log(row.topic[0].order);
+    // console.log(row.order);
     this.editTopicsReactiveForm.patchValue({
       order: row.order,
-      course: row.course,
+      topicName: row.topicName,
       theoryTime: row.theoryTime,
       practiceTime: row.practiceTime,
-      description: row.description,
-      addTopics: row.addTopics,
+      summary: row.summary,
+      content: row.content,
     });
   }
 
@@ -157,11 +159,15 @@ export class TopicsTableComponent implements OnInit {
     this.editingRowID = null;
   }
 
-  protected saveTopics(row: any) {
+  protected saveTopics(row: any, oldTopicName: string) {
     // console.log(row.id);
     if (this.editTopicsReactiveForm.valid) {
       this.addTopicsData
-        .editTopics(row.id, this.editTopicsReactiveForm.value)
+        .editTopics(
+          this.routedTopic,
+          this.editTopicsReactiveForm.value,
+          oldTopicName
+        )
         .subscribe({
           next: (data: any) => {
             console.log(data);

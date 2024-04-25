@@ -15,6 +15,7 @@ import { CourseTableDataService } from 'src/app/components/admin/Services/course
 interface CourseData {
   targetCode: string;
   targetCourse: string;
+  targetTopicName: string;
 }
 
 @Component({
@@ -32,4 +33,11 @@ interface CourseData {
 })
 export class DeleteDialogueComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: CourseData) {}
+
+  // courses delete
+  targetCode: string = this.data.targetCode;
+  targetCourse: string = this.data.targetCourse;
+
+  // topic delete
+  targetTopicName: string = this.data.targetTopicName;
 }
