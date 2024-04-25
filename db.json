@@ -42,12 +42,11 @@
       "id": "k6l2"
     },
     {
-      "code": "24CGF8",
+      "code": "24CGV9",
       "course": "Computer Networks",
       "theoryTime": "6",
       "practiceTime": "4",
-      "description": "Understanding computer network principles",
-      "addTopics": "OSI Model, TCP/IP, Routing, Network Security",
+      "description": "Understanding computer network principl",
       "id": "m8n4"
     },
     {
@@ -76,30 +75,53 @@
       "description": "Understand security principles and practices",
       "addTopics": "Cryptography, Network Security, Web Security",
       "id": "s4t0"
-    },
-    {
-      "code": "AGC45",
-      "course": "dasd",
-      "theoryTime": "dasd",
-      "practiceTime": "sadsadas",
-      "description": "dasdas",
-      "id": "d372"
     }
   ],
   "topics": [
     {
-      "id": "89eb",
+      "id": "2gvh7",
       "code": "24CGF3",
-      "course": "C++ Programming",
+      "topic": []
+    },
+    {
+      "id": "195b",
+      "code": "24CGF4",
       "topic": [
         {
-          "id": "5f34",
+          "order": "312",
+          "topicName": "3123",
+          "theoryTime": "312",
+          "practiceTime": "321",
+          "summary": "321",
+          "content": "3213"
+        }
+      ]
+    },
+    {
+      "id": "fafd",
+      "code": "24CGV9",
+      "topic": [
+        {
           "order": "1",
-          "topicName": "Variablesdsadasdsadsa & Operators",
-          "theoryTime": "2",
-          "practiceTime": "2",
-          "summary": "lorem ipsum todor it work will work bye bye hello katz",
-          "content": "lorem ipsum todor it work will work bye bye hello katz"
+          "topicName": "Routing",
+          "theoryTime": "12",
+          "practiceTime": "12",
+          "summary": "dasdasdasd",
+          "content": "dasdasd"
+        }
+      ]
+    },
+    {
+      "id": "oddD9KK",
+      "code": "AGC45",
+      "topic": [
+        {
+          "order": "sd",
+          "topicName": "as",
+          "theoryTime": "da",
+          "practiceTime": "12",
+          "summary": "321",
+          "content": "dasdas"
         }
       ]
     }

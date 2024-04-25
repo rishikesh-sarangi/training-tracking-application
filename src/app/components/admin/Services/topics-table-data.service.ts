@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, mergeMap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,19 +10,57 @@ export class TopicsTableDataService {
   Index: string = 'http://localhost:3000/topics';
 
   addTopics(code: string, newData: any): Observable<any> {
-    // Fetch existing data
+    // fetch the existing data and then do conditional put request
     return this._http.get<any[]>(this.Index).pipe(
-      map((data: any[]) => {
+      mergeMap((data: any[]) => {
         const existingTopic = data.find((topic) => topic.code === code);
         if (existingTopic) {
-          // If topic with given code exists, append newData to its topic array
           existingTopic.topic.push(newData);
-          console.log(existingTopic);
-          // Update the topic in the database
+          console.log(`${this.Index}/${existingTopic.id}`, existingTopic);
+
           return this._http.put(
             `${this.Index}/${existingTopic.id}`,
             existingTopic
           );
+        }
+        // else
+        const newTopic = {
+          code: code,
+          topic: [newData],
+        };
+        return this._http.post(`${this.Index}`, newTopic);
+      })
+    );
+  }
+  // return this._http.put(`${this.Index}/89eb`, this.xyz);
+
+  getTopics(): Observable<any> {
+    return this._http.get(`${this.Index}`);
+  }
+
+  deleteTopics(code: string, topic: string): Observable<any> {
+    // Fetch existing data
+    return this._http.get<any[]>(this.Index).pipe(
+      mergeMap((data: any[]) => {
+        const existingTopic = data.find((topicCode) => topicCode.code === code);
+        if (existingTopic) {
+          // If topic with given code exists, remove the topic with the specified name
+          const topicIndex = existingTopic.topic.findIndex((t: any) => {
+            return t.topicName === topic;
+          });
+          console.log(topicIndex);
+          if (topicIndex !== -1) {
+            existingTopic.topic.splice(topicIndex, 1);
+            // console.log(`${this.Index}/${existingTopic.id}`, existingTopic);
+            // Update the topic in the database
+            return this._http.put(
+              `${this.Index}/${existingTopic.id}`,
+              existingTopic
+            );
+          } else {
+            // If topic with given name doesn't exist, return an error or handle accordingly
+            throw new Error(`Topic with name ${topic} not found.`);
+          }
         } else {
           // If topic with given code doesn't exist, return an error or handle accordingly
           throw new Error(`Topic with code ${code} not found.`);
@@ -31,15 +69,27 @@ export class TopicsTableDataService {
     );
   }
 
-  getTopics(): Observable<any> {
-    return this._http.get(`${this.Index}`);
-  }
-
-  deleteTopics(topicName: string): Observable<any> {
-    return this._http.delete(`${this.Index}/${topicName}`);
-  }
-
-  editTopics(id: string, data: any): Observable<any> {
-    return this._http.put(`${this.Index}/${id}`, data);
+  editTopics(code: string, newData: any, topicName: string): Observable<any> {
+    return this._http.get<any[]>(this.Index).pipe(
+      mergeMap((data: any[]) => {
+        const existingTopic = data.find((topicCode) => topicCode.code === code);
+        if (existingTopic) {
+          const topicIndex = existingTopic.topic.findIndex((t: any) => {
+            return t.topicName === topicName;
+          });
+          if (topicIndex !== -1) {
+            existingTopic.topic[topicIndex] = newData;
+            return this._http.put(
+              `${this.Index}/${existingTopic.id}`,
+              existingTopic
+            );
+          } else {
+            throw new Error(`Topic with name ${topicName} not found.`);
+          }
+        } else {
+          throw new Error(`Topic with code ${code} not found.`);
+        }
+      })
+    );
   }
 }
