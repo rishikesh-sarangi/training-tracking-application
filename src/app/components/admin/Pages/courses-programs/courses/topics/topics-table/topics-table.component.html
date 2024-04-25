@@ -22,7 +22,7 @@
                 <mat-icon
                   ><span
                     class="material-icons-outlined"
-                    (click)="saveTopics(row)"
+                    (click)="saveTopics(row, row.topicName)"
                   >
                     done
                   </span></mat-icon
@@ -48,8 +48,7 @@
             <ng-template #editMode>
               <input
                 type="text"
-                name="code"
-                formControlName="code"
+                formControlName="order"
                 placeholder="Enter Code"
                 class="input-fields enter-code"
               />
@@ -66,9 +65,8 @@
             <ng-template #editMode>
               <input
                 type="text"
-                name="course"
-                formControlName="course"
-                placeholder="Enter Course Name"
+                formControlName="topicName"
+                placeholder="Enter Topic Name"
                 class="input-fields course-name"
               />
             </ng-template>
@@ -84,7 +82,6 @@
             <ng-template #editMode>
               <input
                 type="text"
-                name="theoryTime"
                 formControlName="theoryTime"
                 placeholder="0 hr"
                 class="input-fields theory-time"
@@ -103,7 +100,6 @@
             <ng-template #editMode>
               <input
                 type="text"
-                name="practiceTime"
                 formControlName="practiceTime"
                 placeholder="0 hr"
                 class="input-fields theory-time"
@@ -121,9 +117,8 @@
             <ng-template #editMode>
               <input
                 type="text"
-                name="practiceTime"
-                formControlName="practiceTime"
-                placeholder="0 hr"
+                formControlName="summary"
+                placeholder="Add Summary"
                 class="input-fields theory-time"
               />
             </ng-template>
@@ -139,9 +134,8 @@
             <ng-template #editMode>
               <input
                 type="text"
-                name="practiceTime"
-                formControlName="practiceTime"
-                placeholder="0 hr"
+                formControlName="content"
+                placeholder="Add Content"
                 class="input-fields theory-time"
               />
             </ng-template>
