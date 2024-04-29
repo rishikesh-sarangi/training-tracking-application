@@ -133,7 +133,12 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
           <td mat-cell *matCellDef="let row; let i = index">
             <ng-container *ngIf="i != editingRowID; else editMode">
-              {{ row.description }}
+              <span
+                [matTooltip]="row.description"
+                style="color: rgb(70, 140, 201)"
+                >{{ row.description | slice : 0 : 25
+                }}{{ row.description.length > 25 ? "..." : "" }}</span
+              >
             </ng-container>
             <ng-template #editMode>
               <p
@@ -212,25 +217,23 @@
           <td mat-cell *matCellDef="let row; let i = index">
             <ng-container *ngIf="i !== editingRowID; else editMode">
               <span
-                *ngFor="
-                  let course of row.courses;
-                  let last = last;
-                  let courseIndex = index
-                "
-                [style.display]="courseIndex < 2 ? 'inline' : 'none'"
+                *ngFor="let course of row.courses.slice(0, 2); let last = last"
               >
                 {{ course }}{{ last ? "" : ", " }}
               </span>
-              <span
-                *ngFor="
-                  let course of row.courses;
-                  let last = last;
-                  let courseIndex = index
-                "
-                [style.display]="courseIndex < 2 ? 'inline' : 'none'"
-              >
-                {{ course }}{{ last ? "" : ", " }}
-              </span>
+              <ng-container *ngIf="row.courses.length > 2">
+                <span
+                  [matTooltip]="getRemainingCoursesWithNumbers(row.courses)"
+                  matTooltipClass="tooltip-custom"
+                  style="
+                    text-decoration: underline;
+                    color: rgb(70, 140, 201);
+                    cursor: pointer;
+                  "
+                >
+                  +{{ row.courses.length - 2 }}
+                </span>
+              </ng-container>
             </ng-container>
             <ng-template #editMode>
               <mat-form-field appearance="outline" class="dense-3">

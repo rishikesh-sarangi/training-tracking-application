@@ -145,7 +145,11 @@ export class ProgramsTableComponent implements OnInit {
     this.lettersTypedDesc = event.target.value.length;
   }
 
-  getCoursesTooltip(courses: string[]): string {
-    return courses.join(', ');
+  getRemainingCoursesWithNumbers(courses: string[]): string {
+    const remainingCourses = courses.slice(2);
+    const numberedCourses = remainingCourses.map(
+      (course, index) => `${index + 1}.${course}\n`
+    );
+    return numberedCourses.join(''); // Join with a newline character
   }
 }

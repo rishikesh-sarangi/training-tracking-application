@@ -213,6 +213,6 @@ export class CoursesTableComponent implements OnInit {
     const remainingTopics = topics.slice(3);
     return remainingTopics
       .map((topic, index) => `${index + 1}. ${topic.topicName}`)
-      .join('\t');
+      .join('\n');
   }
 }

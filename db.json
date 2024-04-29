@@ -168,6 +168,22 @@
           "practiceTime": "4324",
           "summary": "423423",
           "content": "324324"
+        },
+        {
+          "order": "5",
+          "topicName": "dasdsa",
+          "theoryTime": "dasdas",
+          "practiceTime": "dasd",
+          "summary": "asdasd",
+          "content": "sadasdasd"
+        },
+        {
+          "order": "6",
+          "topicName": "dsad",
+          "theoryTime": "dasd",
+          "practiceTime": "das",
+          "summary": "dasdas",
+          "content": "dasdas"
         }
       ],
       "id": "R4MmIMO"
@@ -209,10 +225,14 @@
       "programName": "eqweqw",
       "theoryTime": "45",
       "practiceTime": "545",
-      "description": "cfdsfsfds",
+      "description": " Lorem ipsum dolor sit amet consectetugf",
       "courses": [
         "C++ Programming",
-        "Web Development"
+        "Web Development",
+        "Data Structures and Algorithms",
+        "Database Management",
+        "Machine Learning",
+        "Computer Networks"
       ],
       "id": 3
     }

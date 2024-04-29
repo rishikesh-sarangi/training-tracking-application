@@ -30,3 +30,19 @@ body {
   width: 0; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
 }
+.mat-mdc-tooltip {
+  &.tooltip-custom {
+    white-space: pre-wrap;
+    text-wrap: nowrap;
+  }
+}
+
+.mdc-tooltip__surface {
+  letter-spacing: normal !important;
+  text-align: left !important;
+}
+
+th,
+tr.mat-mdc-row:nth-child(odd) {
+  background-color: #f8fbff !important ;
+}
