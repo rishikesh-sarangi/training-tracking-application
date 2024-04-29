@@ -13,6 +13,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, NavigationExtras, RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
 import {
   MatDialog,
   MatDialogRef,
@@ -28,6 +29,8 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { DeleteDialogueComponent } from './delete-dialogue/delete-dialogue.component';
+import { TopicsData } from '../../models/topics-table.model';
+import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
 
 @Component({
   selector: 'app-courses-table',
@@ -55,6 +58,7 @@ import { DeleteDialogueComponent } from './delete-dialogue/delete-dialogue.compo
 export class CoursesTableComponent implements OnInit {
   constructor(
     private courseTableData: CourseTableDataService,
+    private addTopicsData: TopicsTableDataService,
     public _deleteDialog: MatDialog,
     private router: Router
   ) {}
@@ -71,6 +75,9 @@ export class CoursesTableComponent implements OnInit {
     'description',
     'addTopics',
   ];
+
+  topicsData: any[] = [];
+
   dataSource!: MatTableDataSource<TableData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -83,14 +90,23 @@ export class CoursesTableComponent implements OnInit {
 
     // reactive form init
     this.editCourseReactiveForm = new FormGroup({
-      code: new FormControl(null, Validators.required),
-      course: new FormControl(null, Validators.required),
-      theoryTime: new FormControl(null, Validators.required),
-      practiceTime: new FormControl(null, Validators.required),
-      description: new FormControl(null, [
-        Validators.required,
-        Validators.maxLength(40),
-      ]),
+      name: new FormControl(null, Validators.required),
+      email: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required),
+      profilePicture: new FormControl(null, Validators.required),
+    });
+
+    // putting topic data inside topicData array
+    this.addTopicsData.getTopics().subscribe({
+      next: (data) => {
+        this.topicsData = data;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('data has been fetched !');
+      },
     });
   }
 
@@ -151,7 +167,6 @@ export class CoursesTableComponent implements OnInit {
       theoryTime: row.theoryTime,
       practiceTime: row.practiceTime,
       description: row.description,
-      addTopics: row.addTopics,
     });
   }
 
@@ -182,16 +197,22 @@ export class CoursesTableComponent implements OnInit {
 
   // overlay stuff
   protected isDescOpen = false;
-  protected isTopicsOpen = false;
 
   // logic for letters / 40 in desc
   protected lettersTypedDesc: number = 0;
-  protected lettersTypedTopics: number = 0;
+
   protected onInputChange(event: any, type: string) {
     if (type == 'description') {
       this.lettersTypedDesc = event.target.value.length;
       return;
     }
-    this.lettersTypedTopics = event.target.value.length;
+  }
+
+  // getRemaingTopics
+  getRemainingTopics(topics: any[]): string {
+    const remainingTopics = topics.slice(3);
+    return remainingTopics
+      .map((topic, index) => `${index + 1}. ${topic.topicName}`)
+      .join('\t');
   }
 }

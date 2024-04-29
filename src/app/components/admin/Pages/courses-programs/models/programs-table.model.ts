@@ -1,9 +1,8 @@
-export interface TableData {
-  id: string;
+export interface ProgramsTable {
   code: string;
-  course: string;
+  programName: string;
   theoryTime: string;
   practiceTime: string;
   description: string;
-  addTopics: string;
+  courses: string;
 }
