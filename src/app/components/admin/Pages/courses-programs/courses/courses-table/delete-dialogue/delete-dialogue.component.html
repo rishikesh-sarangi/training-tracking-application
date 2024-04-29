@@ -20,6 +20,15 @@
   <div mat-dialog-content class="dialogue-content" *ngIf="targetTopicName">
     Are you sure you want to delete course {{ targetTopicName }}?
   </div>
+  <div
+    mat-dialog-content
+    class="dialogue-content"
+    *ngIf="targetProgramCode && targetProgramName"
+  >
+    Are you sure you want to delete program {{ targetProgramCode }}/{{
+      targetProgramName
+    }}?
+  </div>
   <mat-dialog-actions class="action-btns" align="end">
     <button mat-raised-button color="primary" [mat-dialog-close]="true">
       Yes

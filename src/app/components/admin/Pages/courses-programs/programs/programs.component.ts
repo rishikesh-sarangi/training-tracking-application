@@ -12,10 +12,17 @@ import {
 } from '@angular/forms';
 import { CourseTableDataService } from '../../../Services/course-table-data.service';
 import { ProgramsTableService } from '../../../Services/programs-table.service';
+import { ProgramsTableComponent } from './programs-table/programs-table.component';
 @Component({
   selector: 'app-programs',
   standalone: true,
-  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ProgramsTableComponent,
+  ],
   templateUrl: './programs.component.html',
   styleUrls: ['./programs.component.scss'],
 })
