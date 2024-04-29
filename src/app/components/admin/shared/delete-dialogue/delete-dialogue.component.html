@@ -1,6 +1,13 @@
 <div class="delete-dialogue-component" style="padding: 20px">
   <div class="title">
-    <div style="font-size: 20px; font-weight: 500">Delete Course</div>
+    <div style="font-size: 20px; font-weight: 500">
+      Delete
+      <span *ngIf="targetCode && targetCourse">Course</span>
+      <span *ngIf="targetTopicName">Topic</span>
+      <span *ngIf="targetProgramCode && targetProgramName">Program</span>
+      <span *ngIf="targetTeacherName">Teacher</span>
+      ?
+    </div>
     <mat-icon [mat-dialog-close]="false"
       ><span class="material-icon" style="cursor: pointer"
         >close</span
@@ -9,22 +16,32 @@
   </div>
 
   <mat-divider></mat-divider>
-
-  <div
-    mat-dialog-content
-    class="dialogue-content"
-    *ngIf="targetCourse && targetCode"
+  <ng-container *ngIf="targetCourse && targetCode">
+    <div mat-dialog-content class="dialogue-content">
+      Are you sure you want to delete course {{ targetCode }}/
+      {{ targetCourse }}?
+    </div></ng-container
   >
-    Are you sure you want to delete course {{ targetCode }}/ {{ targetCourse }}?
-  </div>
-  <div mat-dialog-content class="dialogue-content" *ngIf="targetTopicName">
-    Are you sure you want to delete topic {{ targetTopicName }}?
-  </div>
 
-  <div *ngIf="targetProgramCode && targetProgramName" class="dialogue-content">
-    Are you sure you want to delete program {{ targetProgramCode }}/
-    {{ targetProgramName }}?
-  </div>
+  <ng-container *ngIf="targetTopicName">
+    <div mat-dialog-content class="dialogue-content">
+      Are you sure you want to delete topic {{ targetTopicName }}?
+    </div></ng-container
+  >
+
+  <ng-container *ngIf="targetProgramCode && targetProgramName">
+    <div class="dialogue-content">
+      Are you sure you want to delete program {{ targetProgramCode }}/
+      {{ targetProgramName }}?
+    </div></ng-container
+  >
+
+  <ng-container *ngIf="targetTeacherName">
+    <div class="dialogue-content">
+      Are you sure you want to delete teacher {{ targetTeacherName }}?
+    </div></ng-container
+  >
+
   <mat-dialog-actions class="action-btns" align="end">
     <button mat-raised-button color="primary" [mat-dialog-close]="true">
       Yes

@@ -44,6 +44,7 @@
                     type="submit"
                     mat-icon-button
                     [disabled]="!addTeacherReactiveForm.valid"
+                    style="margin-bottom: 20px"
                   >
                     <mat-icon
                       ><span class="material-symbols-outlined">
@@ -146,5 +147,8 @@
     </ng-container>
 
     <!-- actual teachers table with data -->
+    <ng-container *ngIf="!isAddTeacherClicked">
+      <app-teachers-table></app-teachers-table
+    ></ng-container>
   </div>
 </div>

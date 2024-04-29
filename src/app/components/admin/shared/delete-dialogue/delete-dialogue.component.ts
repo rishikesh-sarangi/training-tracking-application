@@ -44,4 +44,7 @@ export class DeleteDialogueComponent {
   // programs delete
   targetProgramCode = this.data.targetProgramCode;
   targetProgramName = this.data.targetProgramName;
+
+  // teacher delete
+  targetTeacherName = this.data.targetTeacherName;
 }

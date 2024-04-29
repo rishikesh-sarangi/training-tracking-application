@@ -1,6 +1,6 @@
-export interface TeachersTableData {
+export interface StudentTableData {
   id: string;
-  teacherName: string;
+  studentName: string;
   courseAssigned: string[];
   emailID: string;
 }

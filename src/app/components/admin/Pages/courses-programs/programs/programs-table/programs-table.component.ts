@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
-import { MatTooltip } from '@angular/material/tooltip';
 import {
   FormBuilder,
   FormGroup,
@@ -33,11 +32,12 @@ export class ProgramsTableComponent {
     private _dialog: MatDialog,
     private coursesService: CourseTableDataService
   ) {}
-  editingRowID: number | null = null;
 
-  isDescOpen: boolean = false;
+  protected editingRowID: number | null = null;
 
-  editProgramsReactiveForm!: FormGroup;
+  protected isDescOpen: boolean = false;
+
+  protected editProgramsReactiveForm!: FormGroup;
 
   dataSource!: MatTableDataSource<ProgramsTable>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -53,8 +53,7 @@ export class ProgramsTableComponent {
     'courses',
   ];
 
-  coursesData: any[] = [];
-  courses: any[] = [];
+  protected courses: string[] = [];
 
   ngOnInit(): void {
     this.getProgramsList();
@@ -106,13 +105,13 @@ export class ProgramsTableComponent {
       data: { targetProgramCode: code, targetProgramName: programName },
     });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.programService.deleteProgram(id).subscribe({
-          next: (data: any) => {
+          next: (data) => {
             this.getProgramsList();
           },
-          error: (err: any) => {
+          error: (err) => {
             console.log(err);
           },
         });
@@ -125,11 +124,11 @@ export class ProgramsTableComponent {
       this.programService
         .editProgram(id, this.editProgramsReactiveForm.value)
         .subscribe({
-          next: (data: any) => {
+          next: (data) => {
             this.cancelEditing();
             this.getProgramsList();
           },
-          error: (err: any) => {
+          error: (err) => {
             console.log(err);
           },
         });

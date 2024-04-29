@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { NgFor } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,9 +16,14 @@ import {
   NgForm,
 } from '@angular/forms';
 import { CourseTableDataService } from '../../Services/course-table-data.service';
+import { TeachersTableService } from '../../Services/teachers-table.service';
+import { TeachersTableComponent } from './teachers-table/teachers-table.component';
+import { TeachersTableData } from '../courses-programs/models/teachers-table.model';
 @Component({
   selector: 'app-teachers',
   standalone: true,
+  templateUrl: './teachers.component.html',
+  styleUrls: ['./teachers.component.scss'],
   imports: [
     CommonModule,
     MatIconModule,
@@ -28,15 +33,24 @@ import { CourseTableDataService } from '../../Services/course-table-data.service
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
+    TeachersTableComponent,
   ],
-  templateUrl: './teachers.component.html',
-  styleUrls: ['./teachers.component.scss'],
 })
 export class TeachersComponent implements OnInit {
-  constructor(private courseTableData: CourseTableDataService) {}
+  constructor(
+    private courseTableData: CourseTableDataService,
+    private teacherService: TeachersTableService
+  ) {}
 
   protected isAddTeacherClicked: boolean = false;
   protected addTeacherReactiveForm!: FormGroup;
+
+  displayedColumns: string[] = [
+    'actions',
+    'teacherName',
+    'courseAssigned',
+    'emailID',
+  ];
 
   courses: string[] = [];
   ngOnInit(): void {
@@ -49,9 +63,6 @@ export class TeachersComponent implements OnInit {
       error: (err) => {
         console.log(err);
       },
-      complete: () => {
-        console.log(this.courses);
-      },
     });
 
     this.addTeacherReactiveForm = new FormGroup({
@@ -61,14 +72,21 @@ export class TeachersComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = [
-    'actions',
-    'teacherName',
-    'courseAssigned',
-    'emailID',
-  ];
-
-  protected onSubmit() {}
+  protected onSubmit() {
+    if (this.addTeacherReactiveForm.valid) {
+      this.teacherService
+        .addTeachers(this.addTeacherReactiveForm.value)
+        .subscribe({
+          next: () => {
+            this.isAddTeacherClicked = !this.isAddTeacherClicked;
+            this.addTeacherReactiveForm.reset();
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+    }
+  }
 
   protected closeForm() {
     this.addTeacherReactiveForm.reset();
