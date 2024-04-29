@@ -142,14 +142,10 @@ export class CoursesTableComponent implements OnInit {
       if (result) {
         this.courseTableData.deleteCourses(id).subscribe({
           next: (data) => {
-            console.log('emp deleted');
             this.getCoursesList();
           },
           error: (err) => {
             console.log(err);
-          },
-          complete: () => {
-            console.log('data has been deleted !');
           },
         });
       }
@@ -161,17 +157,7 @@ export class CoursesTableComponent implements OnInit {
   protected editCourse(i: number, row: TableData) {
     // console.log(row);
     this.editingRowID = i;
-    this.populateEditFields(row);
-  }
-
-  protected populateEditFields(row: TableData) {
-    this.editCourseReactiveForm.patchValue({
-      code: row.code,
-      course: row.course,
-      theoryTime: row.theoryTime,
-      practiceTime: row.practiceTime,
-      description: row.description,
-    });
+    this.editCourseReactiveForm.patchValue(row);
   }
 
   protected cancelEditing() {
@@ -185,15 +171,11 @@ export class CoursesTableComponent implements OnInit {
         .editCourses(row.id, this.editCourseReactiveForm.value)
         .subscribe({
           next: (data) => {
-            console.log(data);
             this.editingRowID = null;
             this.getCoursesList();
           },
           error: (err) => {
             console.log(err);
-          },
-          complete: () => {
-            console.log('data has been edited !');
           },
         });
     }

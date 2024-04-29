@@ -4,7 +4,7 @@
       "code": "24CGF3",
       "course": "C++ Programming",
       "theoryTime": "3",
-      "practiceTime": "2",
+      "practiceTime": "1",
       "description": "C++ is a powerful object-oriented lang.",
       "id": "c5d6"
     },
@@ -28,7 +28,7 @@
       "code": "24CGF6",
       "course": "Database Management",
       "theoryTime": "4",
-      "practiceTime": "6",
+      "practiceTime": "10",
       "description": "Learn SQL and database management system",
       "id": "i4j0"
     },
@@ -249,6 +249,20 @@
         }
       ],
       "id": "udSd5if"
+    },
+    {
+      "code": "24CGF5",
+      "topic": [
+        {
+          "order": "1",
+          "topicName": "Kai Cenat",
+          "theoryTime": "2",
+          "practiceTime": "3",
+          "summary": "faffdsfs",
+          "content": "sdfsdfds"
+        }
+      ],
+      "id": "gy948sz"
     }
   ],
   "programs": [
@@ -293,6 +307,17 @@
         "Machine Learning"
       ],
       "id": 5
+    }
+  ],
+  "teachers": [
+    {
+      "teacherName": "Harshdeep Singh",
+      "courseAssigned": [
+        "C++ Programming",
+        "Web Development"
+      ],
+      "emailID": "harsh@gmail.com",
+      "id": 1
     }
   ]
 }
