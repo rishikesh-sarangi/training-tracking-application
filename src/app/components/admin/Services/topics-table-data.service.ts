@@ -9,16 +9,17 @@ export class TopicsTableDataService {
 
   Index: string = 'http://localhost:3000/topics';
 
+  // delete through ID
   addTopics(code: string, newData: any): Observable<any> {
     // fetch the existing data and then do conditional put request
     return this._http.get<any[]>(this.Index).pipe(
       mergeMap((data: any[]) => {
         const existingTopic = data.find((topic) => topic.code === code);
+        // console.log(existingTopic);
         if (existingTopic) {
           existingTopic.topic.push(newData);
-          console.log(`${this.Index}/${existingTopic.id}`, existingTopic);
 
-          return this._http.put(
+          return this._http.patch(
             `${this.Index}/${existingTopic.id}`,
             existingTopic
           );
@@ -53,7 +54,7 @@ export class TopicsTableDataService {
             existingTopic.topic.splice(topicIndex, 1);
             // console.log(`${this.Index}/${existingTopic.id}`, existingTopic);
             // Update the topic in the database
-            return this._http.put(
+            return this._http.patch(
               `${this.Index}/${existingTopic.id}`,
               existingTopic
             );
@@ -79,7 +80,7 @@ export class TopicsTableDataService {
           });
           if (topicIndex !== -1) {
             existingTopic.topic[topicIndex] = newData;
-            return this._http.put(
+            return this._http.patch(
               `${this.Index}/${existingTopic.id}`,
               existingTopic
             );

@@ -94,11 +94,6 @@ export class CoursesComponent {
     // console.log('close form', this.isAddCourseClicked);
   }
 
-  protected addCourse() {
-    this.isAddCourseClicked = !this.isAddCourseClicked;
-    // console.log('add course', this.isAddCourseClicked);
-  }
-
   // logic for letters / 40 in desc
   protected isDescOpen = false;
   protected lettersTypedDesc: number = 0;

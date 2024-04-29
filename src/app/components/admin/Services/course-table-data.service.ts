@@ -11,7 +11,7 @@ export class CourseTableDataService {
 
   Index: string = 'http://localhost:3000/courses';
 
-  addCourse(data: any): Observable<any> {
+  addCourse(data: TableData): Observable<any> {
     return this._http.post(`${this.Index}`, data);
   }
 

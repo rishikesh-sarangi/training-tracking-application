@@ -75,25 +75,84 @@
       "description": "Understand security principles and practices",
       "addTopics": "Cryptography, Network Security, Web Security",
       "id": "s4t0"
+    },
+    {
+      "code": "312",
+      "course": "das",
+      "theoryTime": "312",
+      "practiceTime": "das",
+      "description": "dasds",
+      "id": "4qUphS1"
     }
   ],
   "topics": [
-    {
-      "id": "2gvh7",
-      "code": "24CGF3",
-      "topic": []
-    },
     {
       "id": "195b",
       "code": "24CGF4",
       "topic": [
         {
-          "order": "312",
-          "topicName": "3123",
-          "theoryTime": "312",
+          "order": "dasd",
+          "topicName": "adsadas",
+          "theoryTime": "dasd",
+          "practiceTime": "dasdaas",
+          "summary": "sdasdsa",
+          "content": "dasdasdas"
+        },
+        {
+          "order": "1",
+          "topicName": "2",
+          "theoryTime": "3",
+          "practiceTime": "4",
+          "summary": "5",
+          "content": "6"
+        },
+        {
+          "order": "23",
+          "topicName": "32",
+          "theoryTime": "32",
+          "practiceTime": "32",
+          "summary": "32",
+          "content": "32"
+        },
+        {
+          "order": "3123",
+          "topicName": "dasdasdas",
+          "theoryTime": "d31231",
+          "practiceTime": "21321",
+          "summary": "dasdasdas",
+          "content": "dasdsadasdas"
+        },
+        {
+          "order": "das",
+          "topicName": "dasd",
+          "theoryTime": "asdas",
+          "practiceTime": "asd",
+          "summary": "asdasd",
+          "content": "sadsadasdasd"
+        },
+        {
+          "order": "dasd",
+          "topicName": "asdas",
+          "theoryTime": "dsadas",
+          "practiceTime": "dasdas",
+          "summary": "dasd",
+          "content": "dsadasdassa"
+        },
+        {
+          "order": "dasds",
+          "topicName": "a3221312",
+          "theoryTime": "dasda",
           "practiceTime": "321",
-          "summary": "321",
-          "content": "3213"
+          "summary": "312",
+          "content": "dasdasdasdasda"
+        },
+        {
+          "order": "3123",
+          "topicName": "dasdas",
+          "theoryTime": "3123",
+          "practiceTime": "dasdas",
+          "summary": "313",
+          "content": "dasdsadas"
         }
       ]
     },
@@ -124,6 +183,36 @@
           "content": "dasdas"
         }
       ]
+    },
+    {
+      "code": "24CGF3",
+      "topic": [
+        {
+          "order": "dasd",
+          "topicName": "sdsada",
+          "theoryTime": "sdasda",
+          "practiceTime": "sdasdsa",
+          "summary": "dasd",
+          "content": "asdsadasdasd"
+        }
+      ],
+      "id": "tOVmWry"
+    }
+  ],
+  "programs": [
+    {
+      "code": "1D2125",
+      "programName": "PHP",
+      "theoryTime": "1",
+      "practiceTime": "1",
+      "description": "Lorem ipsum todor ot kalz katz wanz",
+      "courses": [
+        "C++ Programming",
+        "Web Development",
+        "Data Structures and Algorithms",
+        "Database Management"
+      ],
+      "id": 1
     }
   ]
 }

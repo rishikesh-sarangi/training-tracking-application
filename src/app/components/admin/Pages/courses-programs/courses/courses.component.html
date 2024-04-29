@@ -19,7 +19,7 @@
       <button
         mat-stroked-button
         [disabled]="isAddCourseClicked"
-        (click)="addCourse()"
+        (click)="isAddCourseClicked = !isAddCourseClicked"
       >
         Add Course
       </button>

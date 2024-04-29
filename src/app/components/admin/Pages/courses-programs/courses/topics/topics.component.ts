@@ -71,15 +71,13 @@ export class TopicsComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  protected onSubmit() {
     if (this.addTopicsReactiveForm.valid) {
       this.addTopicsData
         .addTopics(this.selectedCourse.code, this.addTopicsReactiveForm.value)
         .subscribe({
           next: (data: any) => {
-            // console.log(data);
-            // const x = crypto.randomUUID;
-            // add snackbar
+            // add snackbar - topics
           },
           error: (err: any) => {
             console.log(err);
