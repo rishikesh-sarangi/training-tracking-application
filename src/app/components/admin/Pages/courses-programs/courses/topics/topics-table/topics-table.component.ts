@@ -47,6 +47,7 @@ export class TopicsTableComponent implements OnInit {
   ) {}
 
   routedTopic!: string;
+
   displayedColumns: string[] = [
     'actions',
     'order',
@@ -66,6 +67,7 @@ export class TopicsTableComponent implements OnInit {
   ngOnInit(): void {
     this.getTopicsList();
 
+    console.log(history.state);
     this.routedTopic = history.state.code;
 
     // reactive form init
@@ -85,6 +87,7 @@ export class TopicsTableComponent implements OnInit {
   protected getTopicsList() {
     this.addTopicsData.getTopics().subscribe({
       next: (data: any) => {
+        console.log(data);
         const topicArrays = [];
         for (const obj of data) {
           if (

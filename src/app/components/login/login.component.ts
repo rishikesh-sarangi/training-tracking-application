@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     this.snackBar.open('Login Invalid', 'Close', {
       horizontalPosition: 'end',
       verticalPosition: 'top',
-      // duration: 2000,
+      duration: 2000,
     });
   }
 

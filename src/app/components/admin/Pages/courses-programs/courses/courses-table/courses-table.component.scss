@@ -21,3 +21,21 @@
   color: #2d74ff;
   cursor: pointer;
 }
+
+.topics-container {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topic-names {
+  display: inline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.extra-topics {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #2d74ff;
+}
