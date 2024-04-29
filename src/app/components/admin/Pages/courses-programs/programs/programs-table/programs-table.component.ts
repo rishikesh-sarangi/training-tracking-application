@@ -1,38 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from 'src/app/material.module';
-import { TopicsData } from '../../models/topics-table.model';
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-  NgForm,
-  FormsModule,
-} from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { ProgramsTable } from '../../models/programs-table.model';
-import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
-import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogueComponent } from '../../courses/courses-table/delete-dialogue/delete-dialogue.component';
+
 @Component({
   selector: 'app-programs-table',
   standalone: true,
-  imports: [CommonModule, MaterialModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './programs-table.component.html',
   styleUrls: ['./programs-table.component.scss'],
 })
-export class ProgramsTableComponent implements OnInit {
-  constructor(
-    private programService: ProgramsTableService,
-    private coursesService: CourseTableDataService,
-    private _dialog: MatDialog
-  ) {}
-
+export class ProgramsTableComponent {
   editingRowID: number | null = null;
 
   isDescOpen: boolean = false;

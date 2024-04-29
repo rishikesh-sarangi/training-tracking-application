@@ -32,7 +32,7 @@ interface CourseData {
   styleUrls: ['./delete-dialogue.component.scss'],
 })
 export class DeleteDialogueComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: CourseData) {}
 
   // courses delete
   targetCode: string = this.data.targetCode;
@@ -40,8 +40,4 @@ export class DeleteDialogueComponent {
 
   // topic delete
   targetTopicName: string = this.data.targetTopicName;
-
-  // program delete
-  targetProgramCode: string = this.data.targetProgramCode;
-  targetProgramName: string = this.data.targetProgramName;
 }
