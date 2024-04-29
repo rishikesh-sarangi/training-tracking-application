@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatIconModule } from '@angular/material/icon';
-import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import {
   MatDialog,
@@ -23,6 +22,7 @@ import { TopicsTableDataService } from 'src/app/components/admin/Services/topics
 import { DeleteDialogueComponent } from '../../courses-table/delete-dialogue/delete-dialogue.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TopicsData } from '../../../models/topics-table.model';
+import { UploadMultipleFilesComponent } from './upload-multiple-files/upload-multiple-files.component';
 @Component({
   selector: 'app-topics-table',
   standalone: true,
@@ -43,7 +43,8 @@ import { TopicsData } from '../../../models/topics-table.model';
 export class TopicsTableComponent implements OnInit {
   constructor(
     private addTopicsData: TopicsTableDataService,
-    private _deleteDialog: MatDialog
+    private _deleteDialog: MatDialog,
+    private dialog:MatDialog,
   ) {}
 
   routedTopic!: string;
@@ -56,6 +57,7 @@ export class TopicsTableComponent implements OnInit {
     'practiceTime',
     'summary',
     'content',
+    'files'
   ];
 
   protected dataSource!: MatTableDataSource<TopicsData>;
@@ -81,6 +83,7 @@ export class TopicsTableComponent implements OnInit {
         Validators.maxLength(40),
       ]),
       content: new FormControl(null, [Validators.required]),
+      files : new FormControl(null),
     });
   }
   // READ DATA
@@ -180,4 +183,18 @@ export class TopicsTableComponent implements OnInit {
         });
     }
   }
+
+  onFilesUploadClick(){
+    //Upload Dialog 
+    this.openUploadDialog();
+  }
+
+  openUploadDialog(): void {
+    const dialogRef = this.dialog.open(UploadMultipleFilesComponent, {
+      width: '800px',
+      height: '400px',
+    });
+
+  }
+
 }
