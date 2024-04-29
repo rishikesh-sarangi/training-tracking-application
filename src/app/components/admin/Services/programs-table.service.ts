@@ -17,10 +17,10 @@ export class ProgramsTableService {
   getPrograms() {
     return this._http.get(this.Index);
   }
-  editProgram(id: string, data: ProgramsTable) {
+
+  editProgram(id: string, data: any) {
     return this._http.patch(`${this.Index}/${id}`, data);
   }
-
   deleteProgram(id: string) {
     return this._http.delete(`${this.Index}/${id}`);
   }

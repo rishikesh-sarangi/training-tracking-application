@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
-import { TopicsData } from '../../models/topics-table.model';
+import { MatTooltip } from '@angular/material/tooltip';
 import {
   FormBuilder,
   FormGroup,
@@ -11,14 +11,15 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { ProgramsTable } from '../../models/programs-table.model';
 import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
+import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
+import { MatDialog } from '@angular/material/dialog';
+import { TopicsData } from '../../models/topics-table.model';
+import { MatTableDataSource } from '@angular/material/table';
 import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogueComponent } from '../../courses/courses-table/delete-dialogue/delete-dialogue.component';
+import { ProgramsTable } from '../../models/programs-table.model';
 @Component({
   selector: 'app-programs-table',
   standalone: true,
@@ -26,13 +27,12 @@ import { DeleteDialogueComponent } from '../../courses/courses-table/delete-dial
   templateUrl: './programs-table.component.html',
   styleUrls: ['./programs-table.component.scss'],
 })
-export class ProgramsTableComponent implements OnInit {
+export class ProgramsTableComponent {
   constructor(
     private programService: ProgramsTableService,
-    private coursesService: CourseTableDataService,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private coursesService: CourseTableDataService
   ) {}
-
   editingRowID: number | null = null;
 
   isDescOpen: boolean = false;
@@ -60,12 +60,12 @@ export class ProgramsTableComponent implements OnInit {
     this.getProgramsList();
 
     this.coursesService.getCourses().subscribe({
-      next: (data) => {
+      next: (data: any) => {
         for (const obj of data) {
           this.courses.push(obj.course);
         }
       },
-      error: (err) => {
+      error: (err: any) => {
         console.log(err);
       },
     });
@@ -106,13 +106,13 @@ export class ProgramsTableComponent implements OnInit {
       data: { targetProgramCode: code, targetProgramName: programName },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         this.programService.deleteProgram(id).subscribe({
-          next: (data) => {
+          next: (data: any) => {
             this.getProgramsList();
           },
-          error: (err) => {
+          error: (err: any) => {
             console.log(err);
           },
         });
@@ -125,11 +125,11 @@ export class ProgramsTableComponent implements OnInit {
       this.programService
         .editProgram(id, this.editProgramsReactiveForm.value)
         .subscribe({
-          next: (data) => {
+          next: (data: any) => {
             this.cancelEditing();
             this.getProgramsList();
           },
-          error: (err) => {
+          error: (err: any) => {
             console.log(err);
           },
         });
@@ -145,7 +145,11 @@ export class ProgramsTableComponent implements OnInit {
     this.lettersTypedDesc = event.target.value.length;
   }
 
-  getCoursesTooltip(courses: string[]): string {
-    return courses.join(', ');
+  getRemainingCoursesWithNumbers(courses: string[]): string {
+    const remainingCourses = courses.slice(2);
+    const numberedCourses = remainingCourses.map(
+      (course, index) => `${index + 1}.${course}\n`
+    );
+    return numberedCourses.join(''); // Join with a newline character
   }
 }

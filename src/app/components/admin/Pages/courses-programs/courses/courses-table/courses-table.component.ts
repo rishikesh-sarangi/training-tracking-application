@@ -28,7 +28,7 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { DeleteDialogueComponent } from './delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
 import { TopicsData } from '../../models/topics-table.model';
 import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
 
@@ -142,10 +142,14 @@ export class CoursesTableComponent implements OnInit {
       if (result) {
         this.courseTableData.deleteCourses(id).subscribe({
           next: (data) => {
+            console.log('emp deleted');
             this.getCoursesList();
           },
           error: (err) => {
             console.log(err);
+          },
+          complete: () => {
+            console.log('data has been deleted !');
           },
         });
       }
@@ -213,6 +217,6 @@ export class CoursesTableComponent implements OnInit {
     const remainingTopics = topics.slice(3);
     return remainingTopics
       .map((topic, index) => `${index + 1}. ${topic.topicName}`)
-      .join('\t');
+      .join('\n');
   }
 }

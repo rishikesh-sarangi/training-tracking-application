@@ -19,7 +19,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
-import { DeleteDialogueComponent } from '../../courses-table/delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from '../../../../../shared/delete-dialogue/delete-dialogue.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TopicsData } from '../../../models/topics-table.model';
 import { UploadMultipleFilesComponent } from './upload-multiple-files/upload-multiple-files.component';
@@ -44,7 +44,7 @@ export class TopicsTableComponent implements OnInit {
   constructor(
     private addTopicsData: TopicsTableDataService,
     private _deleteDialog: MatDialog,
-    private dialog:MatDialog,
+    private dialog: MatDialog
   ) {}
 
   routedTopic!: string;
@@ -57,7 +57,7 @@ export class TopicsTableComponent implements OnInit {
     'practiceTime',
     'summary',
     'content',
-    'files'
+    'files',
   ];
 
   protected dataSource!: MatTableDataSource<TopicsData>;
@@ -83,7 +83,7 @@ export class TopicsTableComponent implements OnInit {
         Validators.maxLength(40),
       ]),
       content: new FormControl(null, [Validators.required]),
-      files : new FormControl(null),
+      files: new FormControl(null),
     });
   }
   // READ DATA
@@ -184,8 +184,8 @@ export class TopicsTableComponent implements OnInit {
     }
   }
 
-  onFilesUploadClick(){
-    //Upload Dialog 
+  onFilesUploadClick() {
+    //Upload Dialog
     this.openUploadDialog();
   }
 
@@ -194,7 +194,5 @@ export class TopicsTableComponent implements OnInit {
       width: '800px',
       height: '400px',
     });
-
   }
-
 }

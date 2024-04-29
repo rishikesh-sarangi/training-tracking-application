@@ -18,16 +18,12 @@
     Are you sure you want to delete course {{ targetCode }}/ {{ targetCourse }}?
   </div>
   <div mat-dialog-content class="dialogue-content" *ngIf="targetTopicName">
-    Are you sure you want to delete course {{ targetTopicName }}?
+    Are you sure you want to delete topic {{ targetTopicName }}?
   </div>
-  <div
-    mat-dialog-content
-    class="dialogue-content"
-    *ngIf="targetProgramCode && targetProgramName"
-  >
-    Are you sure you want to delete program {{ targetProgramCode }}/{{
-      targetProgramName
-    }}?
+
+  <div *ngIf="targetProgramCode && targetProgramName" class="dialogue-content">
+    Are you sure you want to delete program {{ targetProgramCode }}/
+    {{ targetProgramName }}?
   </div>
   <mat-dialog-actions class="action-btns" align="end">
     <button mat-raised-button color="primary" [mat-dialog-close]="true">

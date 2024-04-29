@@ -1,18 +1,12 @@
 @import "../../courses/courses.component.scss";
 
-.action-buttons {
+.action-buttons,
+.action-buttons-edit {
+  cursor: pointer;
   display: flex;
-
   gap: 5px;
-
-  mat-icon {
-    cursor: pointer;
-  }
 }
 
-.courses-container {
-  // max-width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.action-buttons-edit {
+  margin-bottom: 20px;
 }

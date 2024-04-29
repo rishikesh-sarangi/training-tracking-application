@@ -10,13 +10,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
-import { MatSort, MatSortModule } from '@angular/material/sort';
 import {
   MatDialog,
   MatDialogRef,
@@ -52,8 +50,6 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDatepickerModule,
     OverlayModule,
     MatTooltipModule,
-    MatPaginatorModule,
-    MatSortModule,
   ],
 })
 export class MaterialModule {}

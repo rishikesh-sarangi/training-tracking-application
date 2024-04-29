@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
@@ -33,4 +32,71 @@ export class ProgramsComponent implements OnInit {
     private programService: ProgramsTableService
   ) {}
 
+  isAddProgramsClicked: boolean = false;
+  lettersTypedDesc: number = 0;
+  isDescOpen: boolean = false;
+  addProgramsReactiveForm!: FormGroup;
+  courses: any[] = [];
 
+  displayedColumns: string[] = [
+    'actions',
+    'code',
+    'programName',
+    'theoryTime',
+    'practiceTime',
+    'description',
+    'course',
+  ];
+
+  ngOnInit(): void {
+    this.courseTableData.getCourses().subscribe({
+      next: (data) => {
+        for (const obj of data) {
+          this.courses.push(obj.course);
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+    this.addProgramsReactiveForm = new FormGroup({
+      code: new FormControl(null, Validators.required),
+      programName: new FormControl(null, Validators.required),
+      theoryTime: new FormControl(null, Validators.required),
+      practiceTime: new FormControl(null, Validators.required),
+      description: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(40),
+      ]),
+      courses: new FormControl(null, Validators.required),
+    });
+  }
+
+  onInputChange(event: any) {
+    this.lettersTypedDesc = event.target.value.length;
+    return;
+  }
+
+  onSubmit() {
+    // console.log(this.addProgramsReactiveForm.value);
+    if (this.addProgramsReactiveForm.valid) {
+      this.programService
+        .addPrograms(this.addProgramsReactiveForm.value)
+        .subscribe({
+          next: () => {
+            this.isAddProgramsClicked = !this.isAddProgramsClicked;
+            this.addProgramsReactiveForm.reset();
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+    }
+  }
+
+  closeForm() {
+    this.addProgramsReactiveForm.reset();
+    this.isAddProgramsClicked = !this.isAddProgramsClicked;
+  }
+}
