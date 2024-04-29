@@ -90,10 +90,14 @@ export class CoursesTableComponent implements OnInit {
 
     // reactive form init
     this.editCourseReactiveForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      profilePicture: new FormControl(null, Validators.required),
+      code: new FormControl(null, Validators.required),
+      course: new FormControl(null, Validators.required),
+      theoryTime: new FormControl(null, Validators.required),
+      practiceTime: new FormControl(null, Validators.required),
+      description: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(40),
+      ]),
     });
 
     // putting topic data inside topicData array
@@ -138,14 +142,10 @@ export class CoursesTableComponent implements OnInit {
       if (result) {
         this.courseTableData.deleteCourses(id).subscribe({
           next: (data) => {
-            console.log('emp deleted');
             this.getCoursesList();
           },
           error: (err) => {
             console.log(err);
-          },
-          complete: () => {
-            console.log('data has been deleted !');
           },
         });
       }
