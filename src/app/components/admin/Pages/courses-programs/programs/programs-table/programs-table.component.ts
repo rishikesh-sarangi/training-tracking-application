@@ -1,14 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { MaterialModule } from 'src/app/material.module';
+import { MatTooltip } from '@angular/material/tooltip';
+import {
+  FormBuilder,
+  FormGroup,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+  NgForm,
+  FormsModule,
+} from '@angular/forms';
+import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
+import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
+import { MatDialog } from '@angular/material/dialog';
+import { TopicsData } from '../../models/topics-table.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { ProgramsTable } from '../../models/programs-table.model';
 @Component({
   selector: 'app-programs-table',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule, FormsModule],
   templateUrl: './programs-table.component.html',
   styleUrls: ['./programs-table.component.scss'],
 })
 export class ProgramsTableComponent {
+  constructor(
+    private programService: ProgramsTableService,
+    private _dialog: MatDialog,
+    private coursesService: CourseTableDataService
+  ) {}
   editingRowID: number | null = null;
 
   isDescOpen: boolean = false;
@@ -36,12 +60,12 @@ export class ProgramsTableComponent {
     this.getProgramsList();
 
     this.coursesService.getCourses().subscribe({
-      next: (data) => {
+      next: (data: any) => {
         for (const obj of data) {
           this.courses.push(obj.course);
         }
       },
-      error: (err) => {
+      error: (err: any) => {
         console.log(err);
       },
     });
@@ -82,13 +106,13 @@ export class ProgramsTableComponent {
       data: { targetProgramCode: code, targetProgramName: programName },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         this.programService.deleteProgram(id).subscribe({
-          next: (data) => {
+          next: (data: any) => {
             this.getProgramsList();
           },
-          error: (err) => {
+          error: (err: any) => {
             console.log(err);
           },
         });
@@ -101,11 +125,11 @@ export class ProgramsTableComponent {
       this.programService
         .editProgram(id, this.editProgramsReactiveForm.value)
         .subscribe({
-          next: (data) => {
+          next: (data: any) => {
             this.cancelEditing();
             this.getProgramsList();
           },
-          error: (err) => {
+          error: (err: any) => {
             console.log(err);
           },
         });

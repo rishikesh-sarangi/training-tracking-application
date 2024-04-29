@@ -28,7 +28,7 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { DeleteDialogueComponent } from './delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
 import { TopicsData } from '../../models/topics-table.model';
 import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
 
@@ -90,10 +90,14 @@ export class CoursesTableComponent implements OnInit {
 
     // reactive form init
     this.editCourseReactiveForm = new FormGroup({
-      name: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
-      password: new FormControl(null, Validators.required),
-      profilePicture: new FormControl(null, Validators.required),
+      code: new FormControl(null, Validators.required),
+      course: new FormControl(null, Validators.required),
+      theoryTime: new FormControl(null, Validators.required),
+      practiceTime: new FormControl(null, Validators.required),
+      description: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(40),
+      ]),
     });
 
     // putting topic data inside topicData array

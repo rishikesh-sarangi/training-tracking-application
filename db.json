@@ -3,8 +3,8 @@
     {
       "code": "24CGF3",
       "course": "C++ Programming",
-      "theoryTime": "7",
-      "practiceTime": "6",
+      "theoryTime": "3",
+      "practiceTime": "2",
       "description": "C++ is a powerful object-oriented lang.",
       "id": "c5d6"
     },
@@ -70,19 +70,10 @@
     {
       "code": "24CGA1",
       "course": "Cyber Security",
-      "theoryTime": "6",
+      "theoryTime": "2",
       "practiceTime": "6",
-      "description": "Understand security principles and practices",
-      "addTopics": "Cryptography, Network Security, Web Security",
+      "description": "Understand security principles a",
       "id": "s4t0"
-    },
-    {
-      "code": "312",
-      "course": "das",
-      "theoryTime": "312",
-      "practiceTime": "das",
-      "description": "dasds",
-      "id": "4qUphS1"
     }
   ],
   "topics": [
@@ -113,14 +104,6 @@
           "practiceTime": "32",
           "summary": "32",
           "content": "32"
-        },
-        {
-          "order": "3123",
-          "topicName": "dasdasdas",
-          "theoryTime": "d31231",
-          "practiceTime": "21321",
-          "summary": "dasdasdas",
-          "content": "dasdsadasdas"
         },
         {
           "order": "das",
@@ -188,12 +171,13 @@
       "code": "24CGF3",
       "topic": [
         {
-          "order": "dasd",
+          "order": "1",
           "topicName": "sdsada",
           "theoryTime": "sdasda",
           "practiceTime": "sdasdsa",
           "summary": "dasd",
-          "content": "asdsadasdasd"
+          "content": "asdsadasdasd",
+          "files": null
         }
       ],
       "id": "tOVmWry"
@@ -270,7 +254,7 @@
   "programs": [
     {
       "code": "2E2124",
-      "programName": "BI",
+      "programName": "POWER BI",
       "theoryTime": "2",
       "practiceTime": "2",
       "description": "LOREM IPSUM TODOR OT DOR BEN KARMAJS",
@@ -285,20 +269,30 @@
       "id": 2
     },
     {
-      "code": "Drip",
-      "programName": "eqweqw",
-      "theoryTime": "45",
-      "practiceTime": "545",
-      "description": " Lorem ipsum dolor sit amet consectetugf",
+      "code": "2FA56",
+      "programName": "Computer Science",
+      "theoryTime": "5",
+      "practiceTime": "20",
+      "description": "learn the basics of CSE with tutorials",
       "courses": [
         "C++ Programming",
-        "Web Development",
+        "Computer Networks",
+        "Operating Systems"
+      ],
+      "id": 4
+    },
+    {
+      "code": "FN4F5",
+      "programName": "Python",
+      "theoryTime": "5",
+      "practiceTime": "30",
+      "description": "Learn the basics of python",
+      "courses": [
         "Data Structures and Algorithms",
         "Database Management",
-        "Machine Learning",
-        "Computer Networks"
+        "Machine Learning"
       ],
-      "id": 1
+      "id": 5
     }
   ]
 }

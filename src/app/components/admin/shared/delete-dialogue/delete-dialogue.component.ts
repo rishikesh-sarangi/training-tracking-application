@@ -9,7 +9,7 @@ import {
   MatDialogModule,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { CoursesTableComponent } from '../courses-table.component';
+import { CoursesTableComponent } from '../../Pages/courses-programs/courses/courses-table/courses-table.component';
 import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
 
 interface CourseData {
@@ -32,7 +32,7 @@ interface CourseData {
   styleUrls: ['./delete-dialogue.component.scss'],
 })
 export class DeleteDialogueComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: CourseData) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
   // courses delete
   targetCode: string = this.data.targetCode;
@@ -40,4 +40,8 @@ export class DeleteDialogueComponent {
 
   // topic delete
   targetTopicName: string = this.data.targetTopicName;
+
+  // programs delete
+  targetProgramCode = this.data.targetProgramCode;
+  targetProgramName = this.data.targetProgramName;
 }

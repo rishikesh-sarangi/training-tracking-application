@@ -26,6 +26,9 @@ body {
   @include mat.all-component-densities(-3);
 }
 
+.dense-form-field-5 {
+  @include mat.form-field-density(-5);
+}
 ::-webkit-scrollbar {
   width: 0; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
@@ -45,4 +48,10 @@ body {
 th,
 tr.mat-mdc-row:nth-child(odd) {
   background-color: #f8fbff !important ;
+}
+
+.mat-mdc-text-field-wrapper {
+  background-color: #fff !important;
+  border: 1px solid rgba(128, 128, 128, 0.2) !important;
+  border-radius: 5px !important;
 }

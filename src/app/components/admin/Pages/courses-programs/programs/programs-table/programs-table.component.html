@@ -19,7 +19,7 @@
               >
             </div>
             <ng-template #editMode>
-              <div class="action-buttons">
+              <div class="action-buttons-edit">
                 <mat-icon
                   ><span
                     class="material-icons-outlined"
@@ -49,7 +49,7 @@
             <ng-template #editMode>
               <mat-form-field
                 style="width: 150px !important"
-                class="dense-3"
+                class="dense-form-field-5"
                 appearance="outline"
               >
                 <input
@@ -71,7 +71,7 @@
               {{ row.programName }}
             </ng-container>
             <ng-template #editMode>
-              <mat-form-field appearance="outline" class="dense-3">
+              <mat-form-field appearance="outline" class="dense-form-field-5">
                 <input
                   matInput
                   formControlName="programName"
@@ -90,7 +90,7 @@
             </ng-container>
             <ng-template #editMode>
               <mat-form-field
-                class="dense-3"
+                class="dense-form-field-5"
                 style="width: 100px !important"
                 appearance="outline"
               >
@@ -114,7 +114,7 @@
             </ng-container>
             <ng-template #editMode>
               <mat-form-field
-                class="dense-3"
+                class="dense-form-field-5"
                 style="width: 100px !important"
                 appearance="outline"
               >
@@ -148,7 +148,12 @@
                 #trigger="cdkOverlayOrigin"
                 class="input-text"
               >
-                {{ row.description }}
+                <span
+                  [matTooltip]="row.description"
+                  style="color: rgb(70, 140, 201)"
+                  >{{ row.description | slice : 0 : 25
+                  }}{{ row.description.length > 25 ? "..." : "" }}</span
+                >
               </p>
               <ng-template
                 cdkConnectedOverlay
@@ -236,7 +241,11 @@
               </ng-container>
             </ng-container>
             <ng-template #editMode>
-              <mat-form-field appearance="outline" class="dense-3">
+              <mat-form-field
+                appearance="outline"
+                class="dense-form-field-5"
+                style="margin-top: 10px"
+              >
                 <mat-select
                   formControlName="courses"
                   multiple

@@ -203,7 +203,7 @@
         <ng-container matColumnDef="addTopics">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Topics</th>
           <td mat-cell *matCellDef="let row; let i = index">
-            <ng-container *ngIf="i != editingRowID">
+            <ng-container>
               <div class="topics-container">
                 <span
                   *ngFor="let topicObj of topicsData; let topicObjIndex = index"
