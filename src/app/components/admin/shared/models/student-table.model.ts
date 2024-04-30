@@ -1,6 +1,6 @@
 export interface StudentTableData {
   id: string;
+  studentCode: string;
   studentName: string;
-  courseAssigned: string[];
   emailID: string;
 }

@@ -70,7 +70,7 @@ export class TeachersTableComponent implements OnInit, OnChanges {
     });
   }
   // Search Filter
-  @Input() filterValue: any;
+  @Input() filterValue: string = ' ';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['filterValue']) {

@@ -11,14 +11,24 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { CourseTableDataService } from '../../Services/course-table-data.service';
+import { StudentTableService } from '../../Services/student-table.service';
+import { StudentsTableComponent } from './students-table/students-table.component';
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    StudentsTableComponent,
+  ],
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.scss'],
 })
 export class StudentsComponent {
+  constructor(private studentService: StudentTableService) {}
+
   isAddStudentClicked: boolean = false;
   addStudentReactiveForm!: FormGroup;
   displayedColumns: string[] = [
@@ -35,7 +45,21 @@ export class StudentsComponent {
       emailID: new FormControl(null, [Validators.required, Validators.email]),
     });
   }
-  onSubmit() {}
+  onSubmit() {
+    if (this.addStudentReactiveForm.valid) {
+      this.studentService
+        .addStudent(this.addStudentReactiveForm.value)
+        .subscribe({
+          next: () => {
+            this.isAddStudentClicked = !this.isAddStudentClicked;
+            this.addStudentReactiveForm.reset();
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+    }
+  }
   closeForm() {
     this.addStudentReactiveForm.reset();
     this.isAddStudentClicked = !this.isAddStudentClicked;
