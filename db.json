@@ -314,10 +314,25 @@
       "teacherName": "Harshdeep Singh",
       "courseAssigned": [
         "C++ Programming",
-        "Web Development"
+        "Web Development",
+        "Database Management",
+        "Machine Learning",
+        "Computer Networks",
+        "Operating Systems",
+        "Mobile App Development"
       ],
       "emailID": "harsh@gmail.com",
       "id": 1
+    },
+    {
+      "teacherName": "Rishikesh Sarangi",
+      "courseAssigned": [
+        "Computer Networks",
+        "Operating Systems",
+        "Mobile App Development"
+      ],
+      "emailID": "rishikesh@gmail.com",
+      "id": 2
     }
   ]
 }

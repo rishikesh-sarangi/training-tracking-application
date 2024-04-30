@@ -117,7 +117,7 @@ export class TopicsTableComponent implements OnInit {
   }
 
   // DELETE DATA
-  protected deleteTopics(topicName: string) {
+  deleteTopics(topicName: string) {
     const dialogRef = this._deleteDialog.open(DeleteDialogueComponent, {
       data: { targetTopicName: topicName },
     });
