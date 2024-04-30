@@ -13,12 +13,12 @@ import {
 import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
 import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
 import { MatDialog } from '@angular/material/dialog';
-import { TopicsData } from '../../models/topics-table.model';
+import { TopicsData } from 'src/app/components/admin/shared/models/topics-table.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { ProgramsTable } from '../../models/programs-table.model';
+import { ProgramsTable } from 'src/app/components/admin/shared/models/programs-table.model';
 @Component({
   selector: 'app-programs-table',
   standalone: true,

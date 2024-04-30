@@ -14,11 +14,12 @@ import {
   ReactiveFormsModule,
   Validators,
   NgForm,
+  FormsModule,
 } from '@angular/forms';
 import { CourseTableDataService } from '../../Services/course-table-data.service';
 import { TeachersTableService } from '../../Services/teachers-table.service';
 import { TeachersTableComponent } from './teachers-table/teachers-table.component';
-import { TeachersTableData } from '../courses-programs/models/teachers-table.model';
+import { TeachersTableData } from '../../shared/models/teachers-table.model';
 @Component({
   selector: 'app-teachers',
   standalone: true,
@@ -34,6 +35,7 @@ import { TeachersTableData } from '../courses-programs/models/teachers-table.mod
     MatSelectModule,
     MatFormFieldModule,
     TeachersTableComponent,
+    FormsModule,
   ],
 })
 export class TeachersComponent implements OnInit {
@@ -51,6 +53,12 @@ export class TeachersComponent implements OnInit {
     'courseAssigned',
     'emailID',
   ];
+
+  // Search Filter
+  SearchValue: string = '';
+  onSearchChange(event: any) {
+    this.SearchValue = event.target.value;
+  }
 
   courses: string[] = [];
   ngOnInit(): void {

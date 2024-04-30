@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TableData } from '../../models/courses-table.model';
+import { TableData } from 'src/app/components/admin/shared/models/courses-table.model';
 import { TopicsTableComponent } from './topics-table/topics-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -50,7 +50,7 @@ export class TopicsComponent implements OnInit {
 
   isAddTopicsClicked: boolean = false;
 
-  protected addTopicsReactiveForm!: FormGroup;
+  addTopicsReactiveForm!: FormGroup;
 
   ngOnInit(): void {
     this.selectedCourse = history.state;
@@ -71,7 +71,7 @@ export class TopicsComponent implements OnInit {
     });
   }
 
-  protected onSubmit() {
+  onSubmit() {
     if (this.addTopicsReactiveForm.valid) {
       this.addTopicsData
         .addTopics(this.selectedCourse.code, this.addTopicsReactiveForm.value)
@@ -94,15 +94,15 @@ export class TopicsComponent implements OnInit {
     this.isAddTopicsClicked = !this.isAddTopicsClicked;
   }
 
-  protected addTopics() {
+  addTopics() {
     this.isAddTopicsClicked = !this.isAddTopicsClicked;
   }
 
   // 0/40 logic
-  protected isSummaryOpen = false;
-  protected isContentOpen = false;
-  protected lettersTypedDesc: number = 0;
-  protected onInputChange(event: any) {
+  isSummaryOpen = false;
+  isContentOpen = false;
+  lettersTypedDesc: number = 0;
+  onInputChange(event: any) {
     this.lettersTypedDesc = event.target.value.length;
     return;
   }

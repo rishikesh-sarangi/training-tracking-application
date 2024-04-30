@@ -21,7 +21,7 @@ import {
 import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
 import { DeleteDialogueComponent } from '../../../../../shared/delete-dialogue/delete-dialogue.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TopicsData } from '../../../models/topics-table.model';
+import { TopicsData } from 'src/app/components/admin/shared/models/topics-table.model';
 import { UploadMultipleFilesComponent } from './upload-multiple-files/upload-multiple-files.component';
 @Component({
   selector: 'app-topics-table',

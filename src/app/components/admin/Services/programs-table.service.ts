@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ProgramsTable } from '../Pages/courses-programs/models/programs-table.model';
+import { ProgramsTable } from '../shared/models/programs-table.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material.module';
 import {
@@ -9,8 +16,8 @@ import {
   Validators,
   NgForm,
 } from '@angular/forms';
-import { TeachersTableData } from '../../courses-programs/models/teachers-table.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { TeachersTableData } from '../../../shared/models/teachers-table.model';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { TeachersTableService } from '../../../Services/teachers-table.service';
@@ -24,7 +31,7 @@ import { DeleteDialogueComponent } from '../../../shared/delete-dialogue/delete-
   templateUrl: './teachers-table.component.html',
   styleUrls: ['./teachers-table.component.scss'],
 })
-export class TeachersTableComponent implements OnInit {
+export class TeachersTableComponent implements OnInit, OnChanges {
   constructor(
     private teachersService: TeachersTableService,
     private coursesService: CourseTableDataService,
@@ -61,6 +68,18 @@ export class TeachersTableComponent implements OnInit {
       courseAssigned: new FormControl(null, Validators.required),
       emailID: new FormControl(null, [Validators.required, Validators.email]),
     });
+  }
+  // Search Filter
+  @Input() filterValue: any;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['filterValue']) {
+      this.applyFilter(this.filterValue);
+    }
+  }
+  applyFilter(filterValue: string) {
+    // console.log(this.dataSource);
+    this.dataSource.filter = this.filterValue.trim().toLowerCase();
   }
 
   getTeachers() {
@@ -124,8 +143,8 @@ export class TeachersTableComponent implements OnInit {
   getRemainingCoursesWithNumbers(courses: string[]): string {
     const remainingCourses = courses.slice(2);
     const numberedCourses = remainingCourses.map(
-      (course, index) => `${index + 1}.${course}\n`
+      (course, index) => `${index + 1}.${course}`
     );
-    return numberedCourses.join(''); // Join with a newline character
+    return numberedCourses.join('\n'); // Join with a newline character
   }
 }

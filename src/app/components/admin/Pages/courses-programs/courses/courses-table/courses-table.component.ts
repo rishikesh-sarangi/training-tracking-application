@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableData } from '../../models/courses-table.model';
+import { TableData } from 'src/app/components/admin/shared/models/courses-table.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
@@ -29,7 +29,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
-import { TopicsData } from '../../models/topics-table.model';
+import { TopicsData } from 'src/app/components/admin/shared/models/topics-table.model';
 import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
 
 @Component({
