@@ -70,16 +70,22 @@ export class TeachersTableComponent implements OnInit, OnChanges {
     });
   }
   // Search Filter
-  @Input() filterValue: string = ' ';
+  @Input() filterValue!: string;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['filterValue']) {
       this.applyFilter(this.filterValue);
     }
   }
+
   applyFilter(filterValue: string) {
     // console.log(this.dataSource);
-    this.dataSource.filter = this.filterValue.trim().toLowerCase();
+    if (this.dataSource) {
+      this.dataSource.filter = this.filterValue.trim().toLowerCase();
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
+    }
   }
 
   getTeachers() {

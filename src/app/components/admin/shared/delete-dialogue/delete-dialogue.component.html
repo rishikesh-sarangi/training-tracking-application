@@ -7,6 +7,7 @@
       <span *ngIf="targetProgramCode && targetProgramName">Program</span>
       <span *ngIf="targetTeacherName">Teacher</span>
       <span *ngIf="targetStudentName">Student</span>
+      <span *ngIf="targetBatch">Batch</span>
       ?
     </div>
     <mat-icon [mat-dialog-close]="false"
@@ -46,6 +47,12 @@
   <ng-container *ngIf="targetStudentName">
     <div class="dialogue-content">
       Are you sure you want to delete student {{ targetStudentName }}?
+    </div></ng-container
+  >
+
+  <ng-container *ngIf="targetBatch">
+    <div class="dialogue-content">
+      Are you sure you want to delete batch {{ targetBatch }}?
     </div></ng-container
   >
 

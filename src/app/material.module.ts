@@ -15,6 +15,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+  MatTreeModule,
+} from '@angular/material/tree';
 import {
   MatDialog,
   MatDialogRef,
@@ -50,6 +56,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDatepickerModule,
     OverlayModule,
     MatTooltipModule,
+    MatTreeModule,
   ],
 })
 export class MaterialModule {}

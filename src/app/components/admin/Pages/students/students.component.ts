@@ -45,6 +45,7 @@ export class StudentsComponent {
       emailID: new FormControl(null, [Validators.required, Validators.email]),
     });
   }
+
   onSubmit() {
     if (this.addStudentReactiveForm.valid) {
       this.studentService
@@ -60,6 +61,13 @@ export class StudentsComponent {
         });
     }
   }
+
+  // Search Filter
+  SearchValue: string = '';
+  onSearchChange(event: any) {
+    this.SearchValue = event.target.value;
+  }
+
   closeForm() {
     this.addStudentReactiveForm.reset();
     this.isAddStudentClicked = !this.isAddStudentClicked;

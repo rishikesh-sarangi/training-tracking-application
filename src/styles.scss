@@ -29,6 +29,12 @@ body {
 .dense-form-field-5 {
   @include mat.form-field-density(-5);
 }
+
+.dense-datepicker-5 {
+  @include mat.form-field-density(-5);
+  @include mat.icon-button-density(-5);
+  @include mat.datepicker-density(-5);
+}
 ::-webkit-scrollbar {
   width: 0; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
