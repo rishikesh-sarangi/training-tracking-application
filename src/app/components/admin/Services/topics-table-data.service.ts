@@ -33,7 +33,6 @@ export class TopicsTableDataService {
       })
     );
   }
-  // return this._http.put(`${this.Index}/89eb`, this.xyz);
 
   getTopics(): Observable<any> {
     return this._http.get(`${this.Index}`);
@@ -52,7 +51,7 @@ export class TopicsTableDataService {
           console.log(topicIndex);
           if (topicIndex !== -1) {
             existingTopic.topic.splice(topicIndex, 1);
-            // console.log(`${this.Index}/${existingTopic.id}`, existingTopic);
+
             // Update the topic in the database
             return this._http.patch(
               `${this.Index}/${existingTopic.id}`,
