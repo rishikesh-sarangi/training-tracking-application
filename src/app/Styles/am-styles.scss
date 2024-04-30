@@ -1,6 +1,10 @@
-.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper {
-  background-color: black !important;
-  border-radius: 5px;
+.login-form {
+  div {
+    &.mat-mdc-form-field-has-icon-suffix,
+    &.mat-mdc-text-field-wrapper {
+      background-color: rgb(0, 0, 0) !important;
+    }
+  }
 }
 
 .mdc-checkbox__background {

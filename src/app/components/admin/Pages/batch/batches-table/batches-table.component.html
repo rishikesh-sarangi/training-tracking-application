@@ -1,0 +1,56 @@
+<div style="margin-top: 40px" class="courses-table-component">
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <!-- This is the tree node template for leaf nodes (teachers) -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <!-- use a disabled button to provide padding for tree leaf -->
+      <button mat-icon-button></button>
+      <span>{{ node.name }}</span>
+    </mat-tree-node>
+
+    <!-- This is the tree node template for course nodes -->
+    <mat-tree-node
+      *matTreeNodeDef="let node; when: hasCourseChild"
+      matTreeNodePadding
+    >
+      <button mat-icon-button matTreeNodeToggle>
+        <mat-icon class="mat-icon-rtl-mirror"> expand_more </mat-icon>
+      </button>
+      <span>Course: {{ node.name }} ({{ node.code }})</span>
+    </mat-tree-node>
+
+    <!-- This is the tree node template for program nodes -->
+    <mat-tree-node
+      *matTreeNodeDef="let node; when: hasProgramChild"
+      matTreeNodePadding
+    >
+      <button
+        mat-icon-button
+        matTreeNodeToggle
+        [attr.aria-label]="'Toggle ' + node.name"
+      >
+        <mat-icon class="mat-icon-rtl-mirror"> expand_more </mat-icon>
+      </button>
+      <span>Program: {{ node.name }} ({{ node.code }})</span>
+    </mat-tree-node>
+
+    <!-- This is the tree node template for batch nodes -->
+    <mat-tree-node
+      *matTreeNodeDef="let node; when: hasBatchChild"
+      matTreeNodePadding
+    >
+      <button
+        mat-icon-button
+        matTreeNodeToggle
+        [attr.aria-label]="'Toggle ' + node.name"
+      >
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+        </mat-icon>
+      </button>
+      <span
+        >Batch: {{ node.name }} ({{ node.code }}) - Start Date:
+        {{ node.startDate | date }} - ID: {{ node.id }}</span
+      >
+    </mat-tree-node>
+  </mat-tree>
+</div>

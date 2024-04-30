@@ -288,11 +288,7 @@
       "theoryTime": "5",
       "practiceTime": "20",
       "description": "learn the basics of CSE with tutorials",
-      "courses": [
-        "C++ Programming",
-        "Computer Networks",
-        "Operating Systems"
-      ],
+      "courses": ["C++ Programming", "Computer Networks", "Operating Systems"],
       "id": 4
     },
     {
@@ -333,6 +329,16 @@
       ],
       "emailID": "rishikesh@gmail.com",
       "id": 2
+    },
+    {
+      "teacherName": "Sujeet",
+      "courseAssigned": [
+        "Operating Systems",
+        "Mobile App Development",
+        "Cyber Security"
+      ],
+      "emailID": "sujeet@cozentus.com",
+      "id": 3
     }
   ],
   "students": [
@@ -341,6 +347,34 @@
       "studentName": "easlkdas",
       "emailID": "dsa@gam",
       "id": 1
+    },
+    {
+      "studentCode": "CSAa2",
+      "studentName": "dsadas",
+      "emailID": "sdas@das",
+      "id": 2
+    }
+  ],
+  "batches": [
+    {
+      "batchCode": "1D2125",
+      "batchName": "Batch 1",
+      "batchStartDate": "2024-04-01T18:30:00.000Z",
+      "id": 1,
+      "programs": [
+        {
+          "code": "1D2125",
+          "prograName": "PHP",
+          "students": ["Mohit Singh", "Neha Mohan", "Rishikesh Sarangi"],
+          "courses": [
+            {
+              "code": "1D2125",
+              "coursName": "PHP",
+              "teacherName": ["Harshdeep Singh", "Rishikesh Sarangi", "Sujeet"]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

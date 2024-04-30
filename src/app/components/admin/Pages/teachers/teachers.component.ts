@@ -57,7 +57,7 @@ export class TeachersComponent implements OnInit {
   // Search Filter
   SearchValue: string = '';
   onSearchChange(event: any) {
-    this.SearchValue = event.target.value;
+    this.SearchValue = (event.target as HTMLInputElement).value;
   }
 
   courses: string[] = [];

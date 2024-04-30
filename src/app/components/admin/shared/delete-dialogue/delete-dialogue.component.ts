@@ -50,4 +50,7 @@ export class DeleteDialogueComponent {
 
   // student delete
   targetStudentName = this.data.targetStudentName;
+
+  // batch delete
+  targetBatch = this.data.targetBatch;
 }

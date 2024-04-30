@@ -6,7 +6,7 @@
         alt="cozentus-logo"
         class="cozentus-logo"
       />
-      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form class="login-form" [formGroup]="loginForm">
         <mat-form-field appearance="outline" class="dense-3">
           <mat-label><span>Username</span></mat-label>
           <input matInput class="input-text-color" formControlName="username" />
@@ -46,7 +46,7 @@
               >Keep me signed in !</span
             ></mat-checkbox
           >
-          <button mat-button class="login-btn" type="submit">
+          <button mat-button class="login-btn" (click)="onSubmit()">
             <span class="login-text">Login</span>
           </button>
         </div>
