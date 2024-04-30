@@ -47,4 +47,7 @@ export class DeleteDialogueComponent {
 
   // teacher delete
   targetTeacherName = this.data.targetTeacherName;
+
+  // student delete
+  targetStudentName = this.data.targetStudentName;
 }

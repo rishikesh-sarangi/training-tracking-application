@@ -140,5 +140,8 @@
     </ng-container>
 
     <!-- actual students table with data -->
+    <ng-container *ngIf="!isAddStudentClicked">
+      <app-students-table></app-students-table>
+    </ng-container>
   </div>
 </div>
