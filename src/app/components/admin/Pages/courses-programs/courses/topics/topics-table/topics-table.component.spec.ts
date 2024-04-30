@@ -8,7 +8,7 @@ describe('TopicsTableComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TopicsTableComponent]
+      imports: [TopicsTableComponent],
     });
     fixture = TestBed.createComponent(TopicsTableComponent);
     component = fixture.componentInstance;

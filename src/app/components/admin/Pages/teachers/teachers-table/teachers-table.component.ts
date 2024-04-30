@@ -120,4 +120,12 @@ export class TeachersTableComponent implements OnInit {
       }
     });
   }
+
+  getRemainingCoursesWithNumbers(courses: string[]): string {
+    const remainingCourses = courses.slice(2);
+    const numberedCourses = remainingCourses.map(
+      (course, index) => `${index + 1}.${course}\n`
+    );
+    return numberedCourses.join(''); // Join with a newline character
+  }
 }
