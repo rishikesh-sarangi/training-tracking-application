@@ -38,7 +38,7 @@ export class TeachersTableComponent implements OnInit, OnChanges {
     private _dialog: MatDialog
   ) {}
   editTeachersReactiveForm!: FormGroup;
-  editingRowID: number | null = null;
+  editingRowID: number = -1;
   courses: string[] = [];
   displayedColumns: string[] = [
     'actions',
@@ -91,6 +91,7 @@ export class TeachersTableComponent implements OnInit, OnChanges {
   getTeachers() {
     this.teachersService.getTeachers().subscribe({
       next: (data) => {
+        // console.log('getTeachers' + data);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -107,7 +108,7 @@ export class TeachersTableComponent implements OnInit, OnChanges {
         .editTeachers(row.id, this.editTeachersReactiveForm.value)
         .subscribe({
           next: (data) => {
-            this.editingRowID = null;
+            this.editingRowID = -1;
             this.getTeachers();
           },
           error: (err) => {
@@ -120,11 +121,12 @@ export class TeachersTableComponent implements OnInit, OnChanges {
   editTeacher(id: number, row: TeachersTableData) {
     // console.log(row);
     this.editingRowID = id;
+    console.log(id);
     this.editTeachersReactiveForm.patchValue(row);
   }
 
   protected cancelEditing() {
-    this.editingRowID = null;
+    this.editingRowID = -1;
     this.editTeachersReactiveForm.reset();
   }
 

@@ -1,4 +1,3 @@
-@import "../../courses-programs/courses/courses.component.scss";
 table {
   width: 100%;
 }
@@ -20,17 +19,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .example-element-detail {
-  width: 100%;
   overflow: hidden;
-}
-
-.example-element-diagram {
-  min-width: 80px;
-  border: 2px solid black;
-  padding: 8px;
-  font-weight: lighter;
-  margin: 8px 0;
-  height: 104px;
+  // display: flex;
 }
 
 .example-element-symbol {
@@ -45,15 +35,6 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
-}
-
-.inner-table {
-  width: 100%;
-}
-
-.inner-table mat-form-field {
-  margin-top: 15px;
-  width: 100%;
 }
 
 .action-buttons {

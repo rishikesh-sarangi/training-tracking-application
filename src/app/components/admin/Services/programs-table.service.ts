@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProgramsTable } from '../shared/models/programs-table.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class ProgramsTableService {
     return this._http.post(this.Index, data);
   }
 
-  getPrograms() {
+  getPrograms(): Observable<any> {
     return this._http.get(this.Index);
   }
 

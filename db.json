@@ -288,7 +288,11 @@
       "theoryTime": "5",
       "practiceTime": "20",
       "description": "learn the basics of CSE with tutorials",
-      "courses": ["C++ Programming", "Computer Networks", "Operating Systems"],
+      "courses": [
+        "C++ Programming",
+        "Computer Networks",
+        "Operating Systems"
+      ],
       "id": 4
     },
     {
@@ -303,6 +307,20 @@
         "Machine Learning"
       ],
       "id": 5
+    },
+    {
+      "code": "2FC5E",
+      "programName": "JAVA",
+      "theoryTime": "1",
+      "practiceTime": "2",
+      "description": "dasdsadsadasdsadas",
+      "courses": [
+        "C++ Programming",
+        "Web Development",
+        "Data Structures and Algorithms",
+        "Database Management"
+      ],
+      "id": 6
     }
   ],
   "teachers": [
@@ -343,38 +361,89 @@
   ],
   "students": [
     {
-      "studentCode": "Rishikesh",
-      "studentName": "easlkdas",
-      "emailID": "dsa@gam",
+      "studentCode": "2E452",
+      "studentName": "Rishikesh Sarangi",
+      "emailID": "rishieksh@gmail.com",
       "id": 1
     },
     {
-      "studentCode": "CSAa2",
-      "studentName": "dsadas",
-      "emailID": "sdas@das",
+      "studentCode": "HR45C",
+      "studentName": "Harshdeep",
+      "emailID": "harsh@gmail.com",
       "id": 2
+    },
+    {
+      "studentCode": "AGC45",
+      "studentName": "Ananya Gupta",
+      "emailID": "ananya@gmail.com",
+      "id": 3
+    },
+    {
+      "studentCode": "VJ23K",
+      "studentName": "Sanskar Parida",
+      "emailID": "sanskar@gmail.com",
+      "id": 4
     }
   ],
   "batches": [
     {
-      "batchCode": "1D2125",
+      "batchCode": "1E2FG",
       "batchName": "Batch 1",
-      "batchStartDate": "2024-04-01T18:30:00.000Z",
-      "id": 1,
-      "programs": [
+      "batchStartDate": "2024-05-10T18:30:00.000Z",
+      "id": 1
+    },
+    {
+      "batchCode": "2EFV1",
+      "batchName": "Batch 2",
+      "batchStartDate": "2024-05-09T18:30:00.000Z",
+      "id": 2
+    },
+    {
+      "batchCode": "CSE45",
+      "batchName": "Batch 3",
+      "batchStartDate": "2024-05-12T18:30:00.000Z",
+      "id": 3
+    }
+  ],
+  "batchPrograms": [
+    {
+      "batchCode": "1E2FG",
+      "batchPrograms": [
         {
-          "code": "1D2125",
-          "prograName": "PHP",
-          "students": ["Mohit Singh", "Neha Mohan", "Rishikesh Sarangi"],
-          "courses": [
-            {
-              "code": "1D2125",
-              "coursName": "PHP",
-              "teacherName": ["Harshdeep Singh", "Rishikesh Sarangi", "Sujeet"]
-            }
-          ]
+          "code": "FN4F5",
+          "programName": "Python",
+          "students": [
+            "Harshdeep",
+            "Sanskar Parida"
+          ],
+          "id": "a3e19cf2-738e-4d48-9a4b-6e8340607a6b"
         }
-      ]
+      ],
+      "id": 1
+    },
+    {
+      "batchCode": "2EFV1",
+      "batchPrograms": [
+        {
+          "code": "2FC5E",
+          "programName": "JAVA",
+          "students": [
+            "Rishikesh Sarangi",
+            "Harshdeep"
+          ],
+          "id": "3dd67006-c892-4b42-8ca8-87d5b154f1b7"
+        },
+        {
+          "code": "2E2124",
+          "programName": "POWER BI",
+          "students": [
+            "Rishikesh Sarangi",
+            "Ananya Gupta"
+          ],
+          "id": "d8a0d0d8-26e0-4d91-a221-476b1450b7fa"
+        }
+      ],
+      "id": 2
     }
   ]
 }

@@ -52,5 +52,11 @@ export class DeleteDialogueComponent {
   targetStudentName = this.data.targetStudentName;
 
   // batch delete
-  targetBatch = this.data.targetBatch;
+  targetBatchCode = this.data.targetBatchCode;
+  targetBatchName = this.data.targetBatchName;
+
+  // batch programs delete
+  targetBatchCode_programs = this.data.targetBatchCode_programs;
+  targetBatchProgramName = this.data.targetBatchProgramName;
+  targetBatchProgramCode = this.data.targetBatchProgramCode;
 }
