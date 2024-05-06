@@ -25,4 +25,8 @@ export class ProgramsTableService {
   deleteProgram(id: string) {
     return this._http.delete(`${this.Index}/${id}`);
   }
+
+  getProgramByCode(code: string): Observable<any> {
+    return this._http.get(`${this.Index}?code=${code}`);
+  }
 }

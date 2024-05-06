@@ -19,6 +19,10 @@ export class CourseTableDataService {
     return this._http.get(`${this.Index}`);
   }
 
+  getCoursesCodeByName(name: string): Observable<any> {
+    return this._http.get(`${this.Index}?course=${name}`);
+  }
+
   deleteCourses(id: string): Observable<any> {
     return this._http.delete(`${this.Index}/${id}`);
   }

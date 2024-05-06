@@ -20,13 +20,37 @@ import { StudentTableService } from 'src/app/components/admin/Services/student-t
 import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogueComponent } from 'src/app/components/admin/shared/delete-dialogue/delete-dialogue.component';
-
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { BatchesProgramCoursesAddComponent } from '../../batches-program-courses/batches-program-courses-add/batches-program-courses-add.component';
+import { BatchesProgramCoursesTableComponent } from '../../batches-program-courses/batches-program-courses-table/batches-program-courses-table.component';
 @Component({
   selector: 'app-batches-program-table',
   standalone: true,
-  imports: [CommonModule, MaterialModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    BatchesProgramCoursesTableComponent,
+    BatchesProgramCoursesAddComponent,
+  ],
   templateUrl: './batches-program-table.component.html',
   styleUrls: ['./batches-program-table.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0px' })),
+      state('expanded', style({ height: '*' })),
+      transition(
+        'expanded <=> collapsed',
+        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
+      ),
+    ]),
+  ],
 })
 export class BatchesProgramTableComponent implements OnInit, OnChanges {
   editBatchProgramReactiveForm!: FormGroup;
@@ -36,6 +60,8 @@ export class BatchesProgramTableComponent implements OnInit, OnChanges {
   programNames: string[] = [];
   programCodes: string[] = [];
   students: string[] = [];
+
+  programCodeForChild!: string;
 
   dataSource!: any;
 
@@ -162,6 +188,24 @@ export class BatchesProgramTableComponent implements OnInit, OnChanges {
   isAddClicked: boolean = false;
   isTableClicked: boolean = false;
 
-  toggleTable(row: any) {}
-  toggleAdd(row: any) {}
+  expandedRowAdd!: any;
+  expandedRowTable!: any;
+
+  toggleAdd(row: any) {
+    this.expandedRowAdd = this.expandedRowAdd == row ? null : row;
+    this.isAddClicked = !this.isAddClicked;
+    this.programCodeForChild = row.code;
+  }
+  toggleTable(row: any) {
+    this.expandedRowTable = this.expandedRowTable == row ? null : row;
+    this.isTableClicked = !this.isTableClicked;
+    this.programCodeForChild = row.code;
+  }
+
+  recieveIsAddClicked(value: boolean) {
+    this.expandedRowTable = null;
+    this.expandedRowAdd = null;
+
+    this.isAddClicked = value;
+  }
 }

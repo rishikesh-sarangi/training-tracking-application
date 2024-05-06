@@ -1,6 +1,6 @@
-<div style="margin-top: 40px" class="courses-table-component">
+<div class="batches-program-component">
   <div class="table-responsive">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
       <form [formGroup]="editBatchProgramReactiveForm">
         <ng-container matColumnDef="actions">
           <th
@@ -11,61 +11,65 @@
           >
             Actions
           </th>
-          <td mat-cell *matCellDef="let row; let i = index">
-            <mat-icon
-              (click)="toggleTable(row)"
-              [ngClass]="{ 'disabled-icon': isAddClicked }"
-              ><span class="material-symbols-outlined">
-                expand_circle_down
-              </span></mat-icon
-            >
-            <span
-              class="action-buttons"
-              *ngIf="i != editingRowID; else editMode"
-            >
-              <mat-icon (click)="editBatchProgram(i, row)">
-                <span class="material-icons-outlined"> edit </span>
-              </mat-icon>
-              <mat-icon (click)="deleteBatchProgram(row)"
-                ><span class="material-icons-outlined"> delete </span></mat-icon
+          <td mat-cell *matCellDef="let row; let i = dataIndex">
+            <div class="action-buttons">
+              <mat-icon
+                (click)="toggleTable(row)"
+                [ngClass]="{ 'disabled-icon': isAddClicked }"
+                ><span class="material-symbols-outlined">
+                  expand_circle_down
+                </span></mat-icon
               >
-            </span>
-            <ng-template #editMode>
-              <span class="action-buttons-edit">
-                <mat-icon
-                  ><span
-                    class="material-icons-outlined"
-                    (click)="saveBatchProgram(row)"
-                  >
-                    done
+              <span
+                *ngIf="i != editingRowID; else editMode"
+                class="action-buttons"
+              >
+                <mat-icon (click)="editBatchProgram(i, row)">
+                  <span class="material-icons-outlined"> edit </span>
+                </mat-icon>
+                <mat-icon (click)="deleteBatchProgram(row)"
+                  ><span class="material-icons-outlined">
+                    delete
                   </span></mat-icon
                 >
-                <mat-icon (click)="cancelEditing()">
-                  <span class="material-icons-outlined"> close </span>
-                </mat-icon>
-              </span></ng-template
-            >
-            <mat-icon style="transform: rotate(90deg)"
-              ><span class="material-symbols-outlined">
-                horizontal_rule
-              </span></mat-icon
-            >
-            <mat-icon style="cursor: pointer"
-              ><span
-                class="material-symbols-outlined"
-                matTooltip="Click to add Program"
-                (click)="toggleAdd(row)"
-                [ngClass]="{ 'disabled-icon': isTableClicked }"
+              </span>
+              <ng-template #editMode>
+                <span class="action-buttons">
+                  <mat-icon
+                    ><span
+                      class="material-icons-outlined"
+                      (click)="saveBatchProgram(row)"
+                    >
+                      done
+                    </span></mat-icon
+                  >
+                  <mat-icon (click)="cancelEditing()">
+                    <span class="material-icons-outlined"> close </span>
+                  </mat-icon>
+                </span></ng-template
               >
-                add
-              </span></mat-icon
-            >
+              <mat-icon style="transform: rotate(90deg)"
+                ><span class="material-symbols-outlined">
+                  horizontal_rule
+                </span></mat-icon
+              >
+              <mat-icon style="cursor: pointer"
+                ><span
+                  class="material-symbols-outlined"
+                  matTooltip="Click to add Course"
+                  (click)="toggleAdd(row)"
+                  [ngClass]="{ 'disabled-icon': isTableClicked }"
+                >
+                  add
+                </span></mat-icon
+              >
+            </div>
           </td>
         </ng-container>
 
         <ng-container matColumnDef="code">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
-          <td mat-cell *matCellDef="let row; let i = index">
+          <td mat-cell *matCellDef="let row; let i = dataIndex">
             <ng-container *ngIf="i != editingRowID; else editMode">
               <div>
                 {{ row.code }}
@@ -84,7 +88,7 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
             Program Name
           </th>
-          <td mat-cell *matCellDef="let row; let i = index">
+          <td mat-cell *matCellDef="let row; let i = dataIndex">
             <ng-container *ngIf="i != editingRowID; else editMode">
               {{ row.programName }}
             </ng-container>
@@ -114,7 +118,7 @@
 
         <ng-container matColumnDef="students">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Students</th>
-          <td mat-cell *matCellDef="let row; let i = index">
+          <td mat-cell *matCellDef="let row; let i = dataIndex">
             <ng-container *ngIf="i != editingRowID; else editMode">
               <span
                 *ngFor="
@@ -157,9 +161,62 @@
             </ng-template>
           </td>
         </ng-container>
+
+        <!-- expansion Table -->
+        <ng-container matColumnDef="expandedDetailTable">
+          <td
+            mat-cell
+            *matCellDef="let row2"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div
+              [@detailExpand]="
+                row2 === expandedRowTable ? 'expanded' : 'collapsed'
+              "
+              class="example-element-detail"
+            >
+              <ng-container *ngIf="row2 === expandedRowTable">
+                <app-batches-program-courses-table></app-batches-program-courses-table>
+              </ng-container>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- exapnsion add -->
+        <ng-container matColumnDef="expandedDetailAdd">
+          <td
+            mat-cell
+            *matCellDef="let row3"
+            [attr.colspan]="displayedColumns.length"
+          >
+            <div
+              [@detailExpand]="
+                row3 === expandedRowAdd ? 'expanded' : 'collapsed'
+              "
+              class="example-element-detail"
+            >
+              <ng-container *ngIf="row3 === expandedRowAdd">
+                <app-batches-program-courses-add
+                  [programCode]="programCodeForChild"
+                  (isAddClicked)="recieveIsAddClicked($event)"
+                ></app-batches-program-courses-add>
+              </ng-container>
+            </div>
+          </td>
+        </ng-container>
       </form>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row2; columns: ['expandedDetailTable']"
+        class="example-detail-row"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row3; columns: ['expandedDetailAdd']"
+        class="example-detail-row"
+      ></tr>
     </table>
   </div>
 </div>

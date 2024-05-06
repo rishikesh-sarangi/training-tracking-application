@@ -444,6 +444,30 @@
         }
       ],
       "id": 2
+    },
+    {
+      "batchCode": "CSE45",
+      "batchPrograms": [
+        {
+          "code": "2FA56",
+          "programName": "Computer Science",
+          "students": [
+            "Rishikesh Sarangi",
+            "Ananya Gupta"
+          ],
+          "id": "faf77c63-c092-45b4-87aa-313a90157a1b"
+        },
+        {
+          "code": "FN4F5",
+          "programName": "Python",
+          "students": [
+            "Harshdeep",
+            "Sanskar Parida"
+          ],
+          "id": "83352e9c-a894-4234-b1eb-7e91ea33b321"
+        }
+      ],
+      "id": 3
     }
   ]
 }
