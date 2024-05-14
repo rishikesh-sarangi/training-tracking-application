@@ -11,7 +11,7 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { BatchServiceService } from '../../Services/batch-service.service';
+import { BatchServiceService } from '../../../shared/Services/batch-service.service';
 @Component({
   selector: 'app-batch',
   standalone: true,

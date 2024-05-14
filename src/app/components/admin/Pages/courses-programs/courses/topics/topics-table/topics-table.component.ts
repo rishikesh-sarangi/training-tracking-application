@@ -18,7 +18,7 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
+import { TopicsTableDataService } from 'src/app/components/shared/Services/topics-table-data.service';
 import { DeleteDialogueComponent } from '../../../../../shared/delete-dialogue/delete-dialogue.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TopicsData } from 'src/app/components/admin/shared/models/topics-table.model';

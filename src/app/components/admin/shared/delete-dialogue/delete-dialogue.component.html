@@ -7,7 +7,10 @@
       <span *ngIf="targetProgramCode && targetProgramName">Program</span>
       <span *ngIf="targetTeacherName">Teacher</span>
       <span *ngIf="targetStudentName">Student</span>
-      <span *ngIf="targetBatch">Batch</span>
+      <span *ngIf="targetBatchCode && targetBatchName">Batch</span>
+      <span *ngIf="targetBatchCode_programs && targetBatchProgramName"
+        >Batch Program</span
+      >
       ?
     </div>
     <mat-icon [mat-dialog-close]="false"
@@ -49,12 +52,27 @@
       Are you sure you want to delete student {{ targetStudentName }}?
     </div></ng-container
   >
-
-  <ng-container *ngIf="targetBatch">
+  <ng-container *ngIf="targetBatchCode && targetBatchName">
     <div class="dialogue-content">
-      Are you sure you want to delete batch {{ targetBatch }}?
-    </div></ng-container
+      Are you sure you want to delete batch {{ targetBatchCode }}/
+      {{ targetBatchName }}?
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngIf="
+      targetBatchCode_programs &&
+      targetBatchProgramName &&
+      targetBatchProgramCode
+    "
   >
+    <div class="dialogue-content">
+      Are you sure you want to delete Program
+      {{ targetBatchProgramName }}/{{ targetBatchProgramCode }} belonging to
+      Batch
+      {{ targetBatchCode_programs }}
+    </div>
+  </ng-container>
 
   <mat-dialog-actions class="action-btns" align="end">
     <button mat-raised-button color="primary" [mat-dialog-close]="true">

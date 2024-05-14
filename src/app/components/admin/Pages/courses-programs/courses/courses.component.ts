@@ -17,7 +17,7 @@ import {
   NgForm,
 } from '@angular/forms';
 import { CoursesTableComponent } from './courses-table/courses-table.component';
-import { CourseTableDataService } from '../../../Services/course-table-data.service';
+import { CourseTableDataService } from '../../../../shared/Services/course-table-data.service';
 
 @Component({
   selector: 'app-courses',

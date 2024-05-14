@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TableData } from '../shared/models/courses-table.model';
+import { TableData } from '../../admin/shared/models/courses-table.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,10 @@ export class CourseTableDataService {
 
   getCourses(): Observable<any> {
     return this._http.get(`${this.Index}`);
+  }
+
+  getCoursesCodeByName(name: string): Observable<any> {
+    return this._http.get(`${this.Index}?course=${name}`);
   }
 
   deleteCourses(id: string): Observable<any> {

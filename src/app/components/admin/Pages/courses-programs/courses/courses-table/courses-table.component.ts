@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TableData } from 'src/app/components/admin/shared/models/courses-table.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
+import { CourseTableDataService } from 'src/app/components/shared/Services/course-table-data.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -30,7 +30,7 @@ import {
 } from '@angular/forms';
 import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
 import { TopicsData } from 'src/app/components/admin/shared/models/topics-table.model';
-import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
+import { TopicsTableDataService } from 'src/app/components/shared/Services/topics-table-data.service';
 
 @Component({
   selector: 'app-courses-table',
@@ -108,9 +108,6 @@ export class CoursesTableComponent implements OnInit {
       error: (err) => {
         console.log(err);
       },
-      complete: () => {
-        console.log('data has been fetched !');
-      },
     });
   }
 
@@ -125,9 +122,6 @@ export class CoursesTableComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-      },
-      complete: () => {
-        console.log('data has been fetched !');
       },
     });
   }
@@ -200,5 +194,11 @@ export class CoursesTableComponent implements OnInit {
     return remainingTopics
       .map((topic, index) => `${index + 1}. ${topic.topicName}`)
       .join('\n');
+  }
+
+  // routing
+  navigateToTopics(row: any) {
+    const routerLink = ['admin', 'home', 'topics', row.code];
+    this.router.navigate(routerLink, { state: row });
   }
 }

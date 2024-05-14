@@ -16,6 +16,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FlatTreeControl } from '@angular/cdk/tree';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ThemePalette } from '@angular/material/core';
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
@@ -57,6 +61,8 @@ import { MatMenuModule } from '@angular/material/menu';
     OverlayModule,
     MatTooltipModule,
     MatTreeModule,
+    MatTabsModule,
+    MatCheckboxModule,
   ],
 })
 export class MaterialModule {}

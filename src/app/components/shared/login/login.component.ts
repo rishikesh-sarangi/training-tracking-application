@@ -71,13 +71,13 @@ export class LoginComponent implements OnInit {
       this.loginForm.value.rememberMe == true
     ) {
       localStorage.setItem('loggedInSave', 'true');
-      this.router.navigate(['home', 'courses']);
+      this.router.navigate(['admin/home/', 'courses']);
     } else if (
       this.loginForm.value.username == 'admin' &&
       this.loginForm.value.password == 'admin'
     ) {
       localStorage.setItem('loggedInTemp', 'true');
-      this.router.navigate(['home', 'courses']);
+      this.router.navigate(['admin/home/', 'courses']);
     } else {
       this.openSnackBar();
     }

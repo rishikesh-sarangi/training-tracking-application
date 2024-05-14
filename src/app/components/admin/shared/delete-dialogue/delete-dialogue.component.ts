@@ -10,7 +10,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { CoursesTableComponent } from '../../Pages/courses-programs/courses/courses-table/courses-table.component';
-import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
+import { CourseTableDataService } from 'src/app/components/shared/Services/course-table-data.service';
 
 interface CourseData {
   targetCode: string;
@@ -52,5 +52,11 @@ export class DeleteDialogueComponent {
   targetStudentName = this.data.targetStudentName;
 
   // batch delete
-  targetBatch = this.data.targetBatch;
+  targetBatchCode = this.data.targetBatchCode;
+  targetBatchName = this.data.targetBatchName;
+
+  // batch programs delete
+  targetBatchCode_programs = this.data.targetBatchCode_programs;
+  targetBatchProgramName = this.data.targetBatchProgramName;
+  targetBatchProgramCode = this.data.targetBatchProgramCode;
 }
