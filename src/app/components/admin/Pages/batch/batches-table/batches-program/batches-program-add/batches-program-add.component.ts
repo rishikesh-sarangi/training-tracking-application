@@ -9,9 +9,9 @@ import {
   Validators,
   NgForm,
 } from '@angular/forms';
-import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
-import { StudentTableService } from 'src/app/components/admin/Services/student-table.service';
-import { BatchProgramsService } from 'src/app/components/admin/Services/batch-programs.service';
+import { ProgramsTableService } from 'src/app/components/shared/Services/programs-table.service';
+import { StudentTableService } from 'src/app/components/shared/Services/student-table.service';
+import { BatchProgramsService } from 'src/app/components/shared/Services/batch-programs.service';
 import {
   BatchLayer2Data,
   BatchPrograms,

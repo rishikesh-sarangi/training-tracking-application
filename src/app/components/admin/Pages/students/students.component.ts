@@ -10,8 +10,8 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { CourseTableDataService } from '../../Services/course-table-data.service';
-import { StudentTableService } from '../../Services/student-table.service';
+import { CourseTableDataService } from '../../../shared/Services/course-table-data.service';
+import { StudentTableService } from '../../../shared/Services/student-table.service';
 import { StudentsTableComponent } from './students-table/students-table.component';
 @Component({
   selector: 'app-students',

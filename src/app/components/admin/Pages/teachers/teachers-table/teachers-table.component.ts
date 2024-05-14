@@ -20,8 +20,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TeachersTableData } from '../../../shared/models/teachers-table.model';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { TeachersTableService } from '../../../Services/teachers-table.service';
-import { CourseTableDataService } from '../../../Services/course-table-data.service';
+import { TeachersTableService } from '../../../../shared/Services/teachers-table.service';
+import { CourseTableDataService } from '../../../../shared/Services/course-table-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogueComponent } from '../../../shared/delete-dialogue/delete-dialogue.component';
 @Component({

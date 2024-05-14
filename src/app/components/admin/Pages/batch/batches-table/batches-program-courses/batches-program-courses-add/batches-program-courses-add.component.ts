@@ -9,9 +9,11 @@ import {
   Validators,
   NgForm,
 } from '@angular/forms';
-import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
-import { TeachersTableService } from 'src/app/components/admin/Services/teachers-table.service';
-import { CourseTableDataService } from 'src/app/components/admin/Services/course-table-data.service';
+import { ProgramsTableService } from 'src/app/components/shared/Services/programs-table.service';
+import { TeachersTableService } from 'src/app/components/shared/Services/teachers-table.service';
+import { CourseTableDataService } from 'src/app/components/shared/Services/course-table-data.service';
+import { BatchProgramsService } from 'src/app/components/shared/Services/batch-programs.service';
+import { BatchProgramCoursesService } from 'src/app/components/shared/Services/batch-program-courses.service';
 @Component({
   selector: 'app-batches-program-courses-add',
   standalone: true,
@@ -24,7 +26,7 @@ export class BatchesProgramCoursesAddComponent implements OnInit {
   displayedColumns: string[] = ['actions', 'code', 'courseName', 'teacherName'];
 
   @Input() programCode!: string;
-
+  @Input() rowIndex!: number;
   // this courses here is program specific
   courses: string[] = [];
   courseCode: string[] = [];
@@ -32,7 +34,9 @@ export class BatchesProgramCoursesAddComponent implements OnInit {
   constructor(
     private programService: ProgramsTableService,
     private teacherService: TeachersTableService,
-    private courseService: CourseTableDataService
+    private courseService: CourseTableDataService,
+    private batchProgramService: BatchProgramsService,
+    private batchProgramCoursesService: BatchProgramCoursesService
   ) {}
 
   ngOnInit(): void {
@@ -76,7 +80,35 @@ export class BatchesProgramCoursesAddComponent implements OnInit {
       },
     });
   }
-  onSubmit() {}
+
+  onSubmit() {
+    if (this.addBatchProgramCoursesReactiveForm.valid) {
+      const batchCode = this.batchProgramCoursesService.getBatchCode();
+      // console.log(typeof batchCode);
+      const batchProgramID =
+        this.batchProgramService.getBatchProgramByBatchCode(batchCode);
+      batchProgramID.subscribe({
+        next: (data) => {
+          // console.log(data[0].batchPrograms[this.rowIndex]); very imp dont delete, we get id of row from this
+          const batchProgramCoursesData = {
+            batchCode: batchCode,
+            batchProgramID: data[0].batchPrograms[this.rowIndex].id, // extremely imp
+            ...this.addBatchProgramCoursesReactiveForm.value,
+          };
+          // console.log(batchProgramCoursesData);
+          this.batchProgramCoursesService
+            .addBatchProgramCourses(batchProgramCoursesData)
+            .subscribe({
+              next: (data) => {
+                // console.log(data);
+                this.closeForm();
+              },
+            });
+        },
+        error: (data) => {},
+      });
+    }
+  }
 
   onProgramChange(event: any) {
     const index = this.courses.indexOf(event.value);

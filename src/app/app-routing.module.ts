@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/shared/login/login.component';
 import { HeaderComponent } from './components/admin/shared/header/header.component';
 import { authGuard } from './components/admin/guards/auth.guard';
 import { CoursesComponent } from './components/admin/Pages/courses-programs/courses/courses.component';

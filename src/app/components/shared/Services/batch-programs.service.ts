@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BatchLayer2Data } from '../shared/models/batch-layer2.model';
+import { BatchLayer2Data } from '../../admin/shared/models/batch-layer2.model';
 import { Observable } from 'rxjs';
 
 @Injectable({

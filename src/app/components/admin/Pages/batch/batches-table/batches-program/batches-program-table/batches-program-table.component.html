@@ -57,7 +57,7 @@
                 ><span
                   class="material-symbols-outlined"
                   matTooltip="Click to add Course"
-                  (click)="toggleAdd(row)"
+                  (click)="toggleAdd(row, i)"
                   [ngClass]="{ 'disabled-icon': isTableClicked }"
                 >
                   add
@@ -198,6 +198,7 @@
               <ng-container *ngIf="row3 === expandedRowAdd">
                 <app-batches-program-courses-add
                   [programCode]="programCodeForChild"
+                  [rowIndex]="rowIndexForChild"
                   (isAddClicked)="recieveIsAddClicked($event)"
                 ></app-batches-program-courses-add>
               </ng-container>
@@ -205,17 +206,27 @@
           </td>
         </ng-container>
       </form>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        style="background-color: #f0f6ff"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        style="background-color: #f0f6ff"
+      ></tr>
       <tr
         mat-row
         *matRowDef="let row2; columns: ['expandedDetailTable']"
         class="example-detail-row"
+        style="background-color: #f0f6ff"
       ></tr>
       <tr
         mat-row
         *matRowDef="let row3; columns: ['expandedDetailAdd']"
         class="example-detail-row"
+        style="background-color: #f0f6ff"
       ></tr>
     </table>
   </div>

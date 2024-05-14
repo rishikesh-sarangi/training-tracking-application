@@ -169,17 +169,7 @@
     },
     {
       "code": "24CGF3",
-      "topic": [
-        {
-          "order": "1",
-          "topicName": "sdsada",
-          "theoryTime": "sdasda",
-          "practiceTime": "sdasdsa",
-          "summary": "dasd",
-          "content": "asdsadasdasd",
-          "files": null
-        }
-      ],
+      "topic": [],
       "id": "tOVmWry"
     },
     {
@@ -408,6 +398,7 @@
   "batchPrograms": [
     {
       "batchCode": "1E2FG",
+      "id": 1,
       "batchPrograms": [
         {
           "code": "FN4F5",
@@ -417,9 +408,26 @@
             "Sanskar Parida"
           ],
           "id": "a3e19cf2-738e-4d48-9a4b-6e8340607a6b"
+        },
+        {
+          "code": "2E2124",
+          "programName": "POWER BI",
+          "students": [
+            "Rishikesh Sarangi",
+            "Ananya Gupta"
+          ],
+          "id": "46a5fb34-2d3c-4eeb-ae52-b5d13cc6daec"
+        },
+        {
+          "code": "2E2124",
+          "programName": "POWER BI",
+          "students": [
+            "Harshdeep",
+            "Sanskar Parida"
+          ],
+          "id": "fa411ce6-03eb-4b84-a31f-ca33d03d6acd"
         }
-      ],
-      "id": 1
+      ]
     },
     {
       "batchCode": "2EFV1",
@@ -467,6 +475,45 @@
           "id": "83352e9c-a894-4234-b1eb-7e91ea33b321"
         }
       ],
+      "id": 3
+    }
+  ],
+  "batchProgramsCourses": [
+    {
+      "batchCode": "1E2FG",
+      "batchProgramID": "a3e19cf2-738e-4d48-9a4b-6e8340607a6b",
+      "code": "24CGF5",
+      "courseName": "Data Structures and Algorithms",
+      "teacherName": "Harshdeep Singh",
+      "id": 1
+    }
+  ],
+  "attendance": [
+    {
+      "batch": "1E2FG",
+      "program": "FN4F5",
+      "course": "Course 1",
+      "date": "2024-05-27T18:30:00.000Z",
+      "topicName": "Topic 2",
+      "topicPercentageCompleted": "10",
+      "id": 1
+    },
+    {
+      "batch": "CSE45",
+      "program": "FN4F5",
+      "course": "Course 1",
+      "date": "2024-05-28T18:30:00.000Z",
+      "topicName": "Topic 1",
+      "topicPercentageCompleted": "10",
+      "id": 2
+    },
+    {
+      "batch": "1E2FG",
+      "program": "FN4F5",
+      "course": "Course 1",
+      "date": "2024-05-24T18:30:00.000Z",
+      "topicName": "Topic 2",
+      "topicPercentageCompleted": "20",
       "id": 3
     }
   ]

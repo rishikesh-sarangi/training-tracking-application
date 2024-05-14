@@ -10,8 +10,8 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { CourseTableDataService } from '../../../Services/course-table-data.service';
-import { ProgramsTableService } from '../../../Services/programs-table.service';
+import { CourseTableDataService } from '../../../../shared/Services/course-table-data.service';
+import { ProgramsTableService } from '../../../../shared/Services/programs-table.service';
 import { ProgramsTableComponent } from './programs-table/programs-table.component';
 @Component({
   selector: 'app-programs',

@@ -15,9 +15,9 @@ import {
   Validators,
   NgForm,
 } from '@angular/forms';
-import { BatchProgramsService } from 'src/app/components/admin/Services/batch-programs.service';
-import { StudentTableService } from 'src/app/components/admin/Services/student-table.service';
-import { ProgramsTableService } from 'src/app/components/admin/Services/programs-table.service';
+import { BatchProgramsService } from 'src/app/components/shared/Services/batch-programs.service';
+import { StudentTableService } from 'src/app/components/shared/Services/student-table.service';
+import { ProgramsTableService } from 'src/app/components/shared/Services/programs-table.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogueComponent } from 'src/app/components/admin/shared/delete-dialogue/delete-dialogue.component';
 import {
@@ -160,6 +160,7 @@ export class BatchesProgramTableComponent implements OnInit, OnChanges {
   }
 
   saveBatchProgram(row: any) {}
+
   cancelEditing() {
     this.editingRowID = -1;
     this.editBatchProgramReactiveForm.reset();
@@ -171,7 +172,7 @@ export class BatchesProgramTableComponent implements OnInit, OnChanges {
       .subscribe({
         next: (value) => {
           for (const obj of value) {
-            // console.log(obj.batchPrograms);
+            console.log(obj.batchPrograms);
             this.dataSource = obj.batchPrograms;
           }
         },
@@ -191,10 +192,13 @@ export class BatchesProgramTableComponent implements OnInit, OnChanges {
   expandedRowAdd!: any;
   expandedRowTable!: any;
 
-  toggleAdd(row: any) {
+  rowIndexForChild!: number;
+
+  toggleAdd(row: any, i: number) {
     this.expandedRowAdd = this.expandedRowAdd == row ? null : row;
     this.isAddClicked = !this.isAddClicked;
     this.programCodeForChild = row.code;
+    this.rowIndexForChild = i;
   }
   toggleTable(row: any) {
     this.expandedRowTable = this.expandedRowTable == row ? null : row;

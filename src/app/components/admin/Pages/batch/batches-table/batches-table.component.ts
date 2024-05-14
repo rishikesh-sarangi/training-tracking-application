@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 import { BatchLayer1Data } from '../../../shared/models/batch-layer1.model';
 import { MatTableDataSource } from '@angular/material/table';
-import { BatchServiceService } from '../../../Services/batch-service.service';
+import { BatchServiceService } from '../../../../shared/Services/batch-service.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,6 +25,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { BatchProgramCoursesService } from 'src/app/components/shared/Services/batch-program-courses.service';
 @Component({
   selector: 'app-batches-table',
   standalone: true,
@@ -51,7 +52,8 @@ import {
 export class BatchesTableComponent implements OnInit {
   constructor(
     private batchService: BatchServiceService,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private batchProgramCoursesService: BatchProgramCoursesService
   ) {}
   editBatchReactiveForm!: FormGroup;
   dataSource!: MatTableDataSource<BatchLayer1Data>;
@@ -134,6 +136,7 @@ export class BatchesTableComponent implements OnInit {
     this.expandedRowTable = this.expandedRowTable == row ? null : row;
     this.isTableClicked = !this.isTableClicked;
     this.batchCodeForChild = row.batchCode;
+    this.batchProgramCoursesService.setBatchCode(row.batchCode);
   }
 
   recieveIsAddClicked(value: boolean) {

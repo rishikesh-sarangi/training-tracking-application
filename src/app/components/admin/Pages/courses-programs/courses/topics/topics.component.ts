@@ -16,7 +16,7 @@ import {
   Validators,
   NgForm,
 } from '@angular/forms';
-import { TopicsTableDataService } from 'src/app/components/admin/Services/topics-table-data.service';
+import { TopicsTableDataService } from 'src/app/components/shared/Services/topics-table-data.service';
 @Component({
   selector: 'app-topics',
   standalone: true,

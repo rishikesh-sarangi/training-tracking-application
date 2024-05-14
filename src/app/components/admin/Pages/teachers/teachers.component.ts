@@ -16,8 +16,8 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { CourseTableDataService } from '../../Services/course-table-data.service';
-import { TeachersTableService } from '../../Services/teachers-table.service';
+import { CourseTableDataService } from '../../../shared/Services/course-table-data.service';
+import { TeachersTableService } from '../../../shared/Services/teachers-table.service';
 import { TeachersTableComponent } from './teachers-table/teachers-table.component';
 import { TeachersTableData } from '../../shared/models/teachers-table.model';
 @Component({
