@@ -16,7 +16,7 @@
       <mat-select
         placeholder="Batch Code: Batch Name"
         formControlName="batch"
-        (selectionChange)="onProgramChange($event)"
+        (selectionChange)="onBatchChange($event)"
       >
         <mat-option *ngFor="let batch of batches" [value]="batch.batchCode">
           Batch {{ batch.batchCode }}: {{ batch.batchName }}

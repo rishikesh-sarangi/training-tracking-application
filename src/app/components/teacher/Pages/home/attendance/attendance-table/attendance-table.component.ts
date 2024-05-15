@@ -17,7 +17,7 @@ import {
   NgForm,
   FormsModule,
 } from '@angular/forms';
-import { AttendanceService } from 'src/app/components/teacher/Services/attendance.service';
+import { AttendanceService } from 'src/app/components/teacher/shared/Services/attendance.service';
 import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-attendance-table',
