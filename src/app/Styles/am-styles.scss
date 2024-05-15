@@ -7,14 +7,14 @@
   }
 }
 
-.mdc-checkbox__background {
-  // border: 2px white solid !important;
-}
+// .mdc-checkbox__background {
+//    border: 2px white solid !important;
+// }
 
-.mdc-checkbox__native-control:enabled:focus:indeterminate
-  ~ .mdc-checkbox__background {
-  // background-color: #fff !important;
-}
+// .mdc-checkbox__native-control:enabled:focus:indeterminate
+//   ~ .mdc-checkbox__background {
+//    background-color: #fff !important;
+// }
 
 .input:-internal-autofill-selected {
   background-color: black !important;

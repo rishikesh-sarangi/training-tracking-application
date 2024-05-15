@@ -81,6 +81,6 @@ export class LoginComponent implements OnInit {
     } else {
       this.openSnackBar();
     }
-    console.log(this.loginForm);
+    // console.log(this.loginForm);
   }
 }

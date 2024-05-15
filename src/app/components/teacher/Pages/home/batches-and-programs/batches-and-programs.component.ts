@@ -73,7 +73,7 @@ export class BatchesAndProgramsComponent implements OnInit {
     });
   }
 
-  onProgramChange(event: any) {
+  onBatchChange(event: any) {
     for (const obj of this.batches) {
       if (obj.batchCode === event.value) {
         const batchStartDate = obj.batchStartDate;
