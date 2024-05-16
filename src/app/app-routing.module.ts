@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/shared/login/login.component';
 import { HeaderComponent } from './components/admin/shared/header/header.component';
-import { authGuard } from './components/admin/guards/auth.guard';
+import {
+  authGuardAdmin,
+  authGuardTeacher,
+} from './components/shared/guards/auth.guard';
 import { CoursesComponent } from './components/admin/Pages/courses-programs/courses/courses.component';
 import { BatchComponent } from './components/admin/Pages/batch/batch.component';
 import { TeachersComponent } from './components/admin/Pages/teachers/teachers.component';
@@ -20,7 +23,7 @@ const routes: Routes = [
   {
     path: 'admin/home',
     component: HeaderComponent,
-    canActivate: [authGuard],
+    canActivate: [authGuardAdmin],
     children: [
       { path: 'courses', component: CoursesComponent },
       { path: 'programs', component: ProgramsComponent },
@@ -33,6 +36,7 @@ const routes: Routes = [
   {
     path: 'teacher',
     component: TeacherHeaderComponent,
+    canActivate: [authGuardTeacher],
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'exams', component: ExamsComponent },

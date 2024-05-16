@@ -11,7 +11,7 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { ProgramsTableService } from 'src/app/components/shared/Services/programs-table.service';
-import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from '../../../../../shared/delete-dialogue/delete-dialogue.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TopicsData } from 'src/app/components/admin/shared/models/topics-table.model';
 import { MatTableDataSource } from '@angular/material/table';

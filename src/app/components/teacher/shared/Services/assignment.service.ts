@@ -21,4 +21,8 @@ export class AssignmentService {
   deleteAssignments(id: number): Observable<any> {
     return this._http.delete(`${this.endpoint}/${id}`);
   }
+
+  editAssignments(id: number, data: any): Observable<any> {
+    return this._http.patch(`${this.endpoint}/${id}`, data);
+  }
 }

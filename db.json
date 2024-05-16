@@ -519,22 +519,10 @@
   ],
   "exams": [
     {
-      "examName": "Rishikesh",
-      "totalMarks": "50",
-      "examDate": "2024-05-12T18:30:00.000Z",
-      "examTime": "3:00 AM",
-      "uploadFile": "C:\\fakepath\\data_description.PNG",
-      "batch": "2EFV1",
-      "batchStartDate": "2024-05-09T18:30:00.000Z",
-      "program": "2E2124",
-      "course": "Data Structures and Algorithms",
-      "id": 2
-    },
-    {
-      "examName": "Mid semester",
+      "examName": "Final Exam",
       "totalMarks": "100",
       "examDate": "2024-05-14T18:30:00.000Z",
-      "examTime": "3:00",
+      "examTime": "17:00",
       "uploadFile": null,
       "batch": "1E2FG",
       "batchStartDate": "2024-05-10T18:30:00.000Z",
@@ -543,42 +531,71 @@
       "id": 3
     },
     {
-      "examName": "4th Semester Exam",
-      "totalMarks": "100",
-      "examDate": "2024-05-30T18:30:00.000Z",
-      "examTime": "4:00PM",
+      "examName": "3rd Sem Exam",
+      "totalMarks": "50",
+      "examDate": "2024-05-28T18:30:00.000Z",
+      "examTime": "16:00",
       "uploadFile": null,
-      "batch": "CSE45",
-      "batchStartDate": "2024-05-12T18:30:00.000Z",
-      "program": "2FA56",
-      "course": "Mobile App Development",
+      "batch": "1E2FG",
+      "batchStartDate": "2024-05-10T18:30:00.000Z",
+      "program": "2E2124",
+      "course": "C++ Programming",
       "id": 4
     }
   ],
   "assignments": [
     {
-      "assignmentName": "OR Assignment 1",
+      "assignmentName": "AD Assignment 2",
       "totalMarks": "20",
-      "assignmentDate": "2024-05-28T18:30:00.000Z",
-      "assignmentTime": "11:59 PM",
-      "uploadFile": null,
-      "batch": "2EFV1",
-      "batchStartDate": "2024-05-09T18:30:00.000Z",
-      "program": "2FC5E",
-      "course": "Data Structures and Algorithms",
-      "id": 1
-    },
-    {
-      "assignmentName": "RE Assignmen50",
-      "totalMarks": "50",
-      "assignmentDate": "2024-05-21T18:30:00.000Z",
-      "assignmentTime": "4:00 AM",
+      "assignmentDate": "2024-05-20T18:30:00.000Z",
+      "assignmentTime": "10:00",
       "uploadFile": null,
       "batch": "1E2FG",
       "batchStartDate": "2024-05-10T18:30:00.000Z",
       "program": "FN4F5",
-      "course": "Computer Networks",
+      "course": "C++ Programming",
       "id": 2
+    },
+    {
+      "assignmentName": "DSD ASSIGNMENT 1",
+      "totalMarks": "40",
+      "assignmentDate": "2024-05-15T18:30:00.000Z",
+      "assignmentTime": "00:00",
+      "uploadFile": null,
+      "batch": "1E2FG",
+      "batchStartDate": "2024-05-10T18:30:00.000Z",
+      "program": "FN4F5",
+      "course": "Data Structures and Algorithms",
+      "id": 3
+    },
+    {
+      "assignmentName": "DSA - 1",
+      "totalMarks": "50",
+      "assignmentDate": "2024-05-15T18:30:00.000Z",
+      "assignmentTime": "13:00",
+      "uploadFile": null,
+      "batch": "CSE45",
+      "batchStartDate": "2024-05-12T18:30:00.000Z",
+      "program": "FN4F5",
+      "course": "C++ Programming",
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "username": "teacher",
+      "password": "teacher",
+      "role": "teacher"
+    },
+    {
+      "username": "rishikesh",
+      "password": "root",
+      "role": "admin"
     }
   ]
 }

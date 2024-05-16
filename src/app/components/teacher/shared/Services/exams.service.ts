@@ -21,4 +21,8 @@ export class ExamsService {
   deleteExams(id: number): Observable<any> {
     return this._http.delete(`${this.endpoint}/${id}`);
   }
+
+  editExams(id: number, data: any): Observable<any> {
+    return this._http.patch(`${this.endpoint}/${id}`, data);
+  }
 }

@@ -19,7 +19,7 @@ import { BatchProgramsService } from 'src/app/components/shared/Services/batch-p
 import { StudentTableService } from 'src/app/components/shared/Services/student-table.service';
 import { ProgramsTableService } from 'src/app/components/shared/Services/programs-table.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogueComponent } from 'src/app/components/admin/shared/delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from 'src/app/components/shared/delete-dialogue/delete-dialogue.component';
 import {
   animate,
   state,
