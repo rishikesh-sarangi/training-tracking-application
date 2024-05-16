@@ -16,6 +16,7 @@ export class TeacherHeaderComponent {
   selectedTab: string = 'Courses';
 
   protected logOut() {
+    localStorage.clear();
     this.router.navigate(['']);
   }
 

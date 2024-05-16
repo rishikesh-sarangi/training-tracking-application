@@ -29,7 +29,7 @@ export class HeaderComponent {
   selectedTab: string = 'Courses';
 
   protected logOut() {
-    
+    localStorage.clear();
     this.router.navigate(['']);
   }
 

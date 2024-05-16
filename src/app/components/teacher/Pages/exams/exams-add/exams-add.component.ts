@@ -10,7 +10,6 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
-import { ExamParent } from '../../../shared/models/ExamParentModel';
 import { ExamsService } from '../../../shared/Services/exams.service';
 import { AssignmentService } from '../../../shared/Services/assignment.service';
 @Component({
@@ -88,6 +87,11 @@ export class ExamsAddComponent {
   }
   onSubmit() {
     if (this.sharedReactiveForm.valid) {
+      // this.timeConverter(
+      //   this.sharedReactiveForm.get(
+      //     this.isAssignments ? 'assignmentTime' : 'examTime'
+      //   )?.value
+      // );
       // console.log(this.parentPayload);
       const examPayload = {
         ...this.sharedReactiveForm.value,
@@ -123,4 +127,32 @@ export class ExamsAddComponent {
     const file = event.target.files[0];
     console.log(file);
   }
+
+  // timeConverter(time: string) {
+  //   const timeString = this.isAssignments
+  //     ? this.sharedReactiveForm.get('assignmentTime')?.value
+  //     : this.sharedReactiveForm.get('examTime')?.value;
+
+  //   const [hours, minutes] = timeString.split(':');
+  //   const hoursNum = parseInt(hours, 10);
+
+  //   let period = 'AM';
+  //   let hoursConverted = hoursNum;
+
+  //   if (hoursNum === 0) {
+  //     hoursConverted = 12;
+  //   } else if (hoursNum === 12) {
+  //     period = 'PM';
+  //   } else if (hoursNum > 12) {
+  //     hoursConverted = hoursNum - 12;
+  //     period = 'PM';
+  //   }
+
+  //   const formattedHours = hoursConverted.toString().padStart(2, '0');
+  //   const formattedMinutes = minutes.padStart(2, '0');
+
+  //   this.sharedReactiveForm
+  //     .get(this.isAssignments ? 'assignmentTime' : 'examTime')
+  //     ?.setValue(`${formattedHours}:${formattedMinutes} ${period}`);
+  // }
 }

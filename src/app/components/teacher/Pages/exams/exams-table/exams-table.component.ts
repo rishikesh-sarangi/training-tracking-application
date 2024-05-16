@@ -23,7 +23,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AssignmentService } from '../../../shared/Services/assignment.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogueComponent } from 'src/app/components/admin/shared/delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from 'src/app/components/shared/delete-dialogue/delete-dialogue.component';
 @Component({
   selector: 'app-exams-table',
   standalone: true,
@@ -132,11 +132,10 @@ export class ExamsTableComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
-
-  closeForm() {}
-
-  editExam(id: number, row: any) {}
+  editSharedData(id: number, row: any) {
+    this.editingRowID = id;
+    this.sharedReactiveForm.patchValue(row);
+  }
 
   deleteSharedData(row: any) {
     const dialogRef = this._dialog.open(DeleteDialogueComponent, {
@@ -163,9 +162,67 @@ export class ExamsTableComponent implements OnInit {
     });
   }
 
-  saveExams(row: any) {}
+  saveSharedData(row: any) {
+    if (this.sharedReactiveForm.valid) {
+      // console.log(this.sharedReactiveForm.get('assignmentTime')?.value);
 
-  cancelEditing() {}
+      // this.timeConverter(
+      //   this.sharedReactiveForm.get(
+      //     this.isAssignments ? 'assignmentTime' : 'examTime'
+      //   )?.value
+      // );
+
+      const serviceMethod = this.isAssignments
+        ? this.assignmentService.editAssignments(
+            row.id,
+            this.sharedReactiveForm.value
+          )
+        : this.examService.editExams(row.id, this.sharedReactiveForm.value);
+
+      serviceMethod.subscribe({
+        next: (data) => {
+          this.cancelEditing();
+          this.getSharedDetails();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
+  }
+
+  // timeConverter(time: string) {
+  //   const timeString = this.isAssignments
+  //     ? this.sharedReactiveForm.get('assignmentTime')?.value
+  //     : this.sharedReactiveForm.get('examTime')?.value;
+
+  //   const [hours, minutes] = timeString.split(':');
+  //   const hoursNum = parseInt(hours, 10);
+
+  //   let period = 'AM';
+  //   let hoursConverted = hoursNum;
+
+  //   if (hoursNum === 0) {
+  //     hoursConverted = 12;
+  //   } else if (hoursNum === 12) {
+  //     period = 'PM';
+  //   } else if (hoursNum > 12) {
+  //     hoursConverted = hoursNum - 12;
+  //     period = 'PM';
+  //   }
+
+  //   const formattedHours = hoursConverted.toString().padStart(2, '0');
+  //   const formattedMinutes = minutes.padStart(2, '0');
+
+  //   this.sharedReactiveForm
+  //     .get(this.isAssignments ? 'assignmentTime' : 'examTime')
+  //     ?.setValue(`${formattedHours}:${formattedMinutes} ${period}`);
+  // }
+
+  cancelEditing() {
+    this.editingRowID = -1;
+    this.sharedReactiveForm.reset();
+  }
 
   expandedRowTable: any = null;
   isMarkStudentsClicked: boolean = false;

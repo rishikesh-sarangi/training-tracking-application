@@ -14,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 import { StudentTableService } from '../../../../shared/Services/student-table.service';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentTableData } from '../../../shared/models/student-table.model';
-import { DeleteDialogueComponent } from '../../../shared/delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
 import {
   FormBuilder,
   FormGroup,

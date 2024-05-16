@@ -17,7 +17,7 @@ import { BatchServiceService } from '../../../../shared/Services/batch-service.s
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogueComponent } from '../../../shared/delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
 import {
   animate,
   state,

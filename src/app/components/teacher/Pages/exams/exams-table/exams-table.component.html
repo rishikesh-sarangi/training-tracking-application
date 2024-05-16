@@ -2,6 +2,7 @@
   <div class="table-responsive">
     <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
       <form [formGroup]="sharedReactiveForm">
+        <!-- actions -->
         <ng-container matColumnDef="actions">
           <th
             mat-header-cell
@@ -17,7 +18,7 @@
                 *ngIf="i != editingRowID; else editMode"
                 class="action-buttons"
               >
-                <mat-icon (click)="editExam(i, row)">
+                <mat-icon (click)="editSharedData(i, row)">
                   <span class="material-icons-outlined"> edit </span>
                 </mat-icon>
                 <mat-icon (click)="deleteSharedData(row)"
@@ -37,7 +38,7 @@
                   <mat-icon
                     ><span
                       class="material-icons-outlined"
-                      (click)="saveExams(row)"
+                      (click)="saveSharedData(row)"
                     >
                       done
                     </span></mat-icon
@@ -52,7 +53,6 @@
         </ng-container>
 
         <!-- exam name and assignment name -->
-
         <ng-container
           [matColumnDef]="isAssignments ? 'assignmentName' : 'examName'"
         >
@@ -153,6 +153,7 @@
               <mat-form-field appearance="outline" class="dense-form-field-5">
                 <input
                   matInput
+                  type="time"
                   [formControlName]="
                     isAssignments ? 'assignmentTime' : 'examTime'
                   "

@@ -20,7 +20,6 @@ import { BatchProgramsService } from 'src/app/components/shared/Services/batch-p
 import { CourseTableDataService } from 'src/app/components/shared/Services/course-table-data.service';
 
 import { ExamsAddComponent } from './exams-add/exams-add.component';
-import { ExamParent } from '../../shared/models/ExamParentModel';
 import { ExamsTableComponent } from './exams-table/exams-table.component';
 @Component({
   selector: 'app-exams',

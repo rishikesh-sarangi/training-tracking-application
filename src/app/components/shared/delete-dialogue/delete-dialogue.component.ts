@@ -9,7 +9,7 @@ import {
   MatDialogModule,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { CoursesTableComponent } from '../../Pages/courses-programs/courses/courses-table/courses-table.component';
+import { CoursesTableComponent } from '../../admin/Pages/courses-programs/courses/courses-table/courses-table.component';
 import { CourseTableDataService } from 'src/app/components/shared/Services/course-table-data.service';
 
 interface CourseData {

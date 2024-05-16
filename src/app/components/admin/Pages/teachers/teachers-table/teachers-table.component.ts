@@ -23,7 +23,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { TeachersTableService } from '../../../../shared/Services/teachers-table.service';
 import { CourseTableDataService } from '../../../../shared/Services/course-table-data.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogueComponent } from '../../../shared/delete-dialogue/delete-dialogue.component';
+import { DeleteDialogueComponent } from '../../../../shared/delete-dialogue/delete-dialogue.component';
 @Component({
   selector: 'app-teachers-table',
   standalone: true,
